@@ -1,49 +1,57 @@
-# Comparative Sentiment Validity — reproducibility package
+# Supplementary Code S1 and revision supporting materials
 
-**Status:** Private upload candidate, version 0.1.1-review, 16 October 2026. Not a public data release or journal submission.
+This package accompanies the revised comparative sentiment measurement-validity manuscript. It contains reviewable code, aggregate tables, regenerated figure assets, and revision sensitivity outputs. It contains no tweet text, account-name records, row-level text hashes, or individual predictions. Original statistical code is licensed under MIT; see `LICENSE` and `LICENSE_SCOPE.md`. Third-party source data and individual prediction exports are not included or relicensed. The development repository is still private at this preparation step; a public release DOI is not claimed.
 
-This repository supports the manuscript *When Automated Sentiment Analysis Reverses Public Discourse Rankings: A Comparative Measurement-Validity Audit Across Two Twitter Contexts*. The analytic estimand is **negative whole-tweet sentiment prevalence among messages grouped by airline or by mentioned debate candidate**. It is **not** representative public opinion, sentiment directed at each person, or a causal algorithm-amplification estimate.
+## What can be checked without restricted inputs
 
-## What this repository includes and omits
+From this package directory, install the statistical dependencies, then run:
 
-Includes: independently checked group-aggregate findings, reproducibility analysis code, raw-file checksums, sources, review notes and basic algebraic tests.
+```bash
+python -m pip install -r requirements-statistics.txt
+python analysis/verify_archive_tables.py
+python analysis/verify_package.py
+```
 
-**Deliberately excludes:** copyrighted or privacy-sensitive tweet text; social handles and user metadata; row-level text hashes and predictions (potentially linkable); the original model weights; API keys; the author's phone/email; and individual account identifiers. Publication rights for the two historical raw CSVs have **not yet been verified**. The materials here do **not** grant access to either original dataset.
+The first command checks main tables and reaggregates all 8,000 airline and 4,800 GOP classifier-row summaries. The second checks package hashes, error identities, new sensitivity summaries, and k=100 agreement. These checks validate stored aggregates and do not reconstruct the source human annotations or original neural inference. The complete budget protocols were separately executed during this revision using lawful local source records and archived predictions. Their 40 and 24 summaries matched the preserved summaries to all stored numerical precision.
 
-## Reproduce using your own lawful copies
+## Full statistical reruns with lawful local inputs
 
-1. Install Python with `numpy>=2.1,<3` and `pandas>=2.2,<3` from `requirements-analysis.txt`. Run `python -m unittest discover -s tests -v` and `python analysis/verify_archive_tables.py`. The latter runs with only the public-safe *aggregate tables*, without the original tweet text or the saved prediction archives.
-2. Obtain the correct raw data under source terms; compare hashes in `audit/original_source_hashes.json` against `Tweets.csv` and `GOP_REL_ONLY.csv`. See `docs/DATA_PROVENANCE.md`.
-3. Place in `private_inputs/`: `Tweets.csv`, `GOP_REL_ONLY.csv`, `airline_predictions.csv`, `gop_external_validation_results.zip`. Prediction files are **archived outputs**, not public source files; see `docs/INFERENCE_PROTOCOL.md` for regenerating them with an explicitly fixed *current* model version.
-4. Run `python analysis/check_sources.py --input-dir private_inputs`.
-5. Run `SCIE_DATA_ROOT=private_inputs SCIE_OUTPUT_DIR=reproduced_outputs python analysis/reproduce_analysis.py` (Unix/macOS) or set the equivalent two environment variables in Windows PowerShell.
-6. Compare generated tables with `audit/aggregates/`. The repeated-split experiment draws 200 overlapping splits from **one** historical GOP archive; percentile ranges are *conditional* on the chosen archive.
+Place these exact files in a private directory you control; the package does not supply them:
 
-## Key observational study figures (reference archive)
+- `Tweets.csv`: 14,640-row source CSV, expected digest in audit/original_source_hashes.json.
+- `airline_predictions.csv`: aligned source export with reference, vader, roberta, text_sha256. Three-class labels are 0/1/2, negative=0.
+- `GOP_REL_ONLY.csv`: 13,871-row source CSV, expected digest in audit/original_source_hashes.json.
+- `gop_external_validation_results.zip`: preserved archive with `gop_external_validation_results/row_predictions_and_overlap_flags.csv` containing the 4,483 primary rows.
 
-| Context | Unique/model-evaluation records | Groups | Pairs | VADER reversals | RoBERTa reversals |
-|---|---:|---:|---:|---:|---:|
-| US airline tweets | 14,640 | 6 | 15 | 3 | 0 |
-| GOP debate: unique texts with a named candidate | 4,483 | 10 | 45 | 7 | 7 |
+Run from the package root, replacing `/absolute/private/inputs` with that lawful local directory:
 
-A strict reversal means that the signed *human-reference* difference and the model-predicted difference in group negative proportions have opposite signs. Exact predicted ties are not counted as strict reversals. Gap-threshold analyses select pairs by the original reference gap.
+```bash
+python analysis/airline_budget.py --raw /absolute/private/inputs/Tweets.csv --pred /absolute/private/inputs/airline_predictions.csv --out rerun_airline
+SCIE_DATA_ROOT=/absolute/private/inputs SCIE_OUTPUT_DIR=rerun_gop python analysis/reproduce_analysis.py
+python analysis/revision_sensitivity.py --inputs /absolute/private/inputs --out rerun_revision
+```
 
-## Reproduction boundaries
+The recovered airline routine uses seed 20261015, upward-rounded 20% holdouts and independently sampled budgets. GOP uses seed 20261016, nearest-integer 20% holdouts and nested budgets. Calibration and evaluation records never overlap within a split. k=100 and the exact native smoothing/shrinkage formulas are preserved separately for each corpus; see manuscript Appendix A2. No code trains a classifier or regenerates historical neural predictions. To regenerate all figure formats from exact aggregates, install requirements-figures.txt and run `python analysis/make_figures.py`. The PNG/PDF/SVG assets are also supplied directly. Regeneration creates new PDF metadata and therefore may change figure-file hashes without changing their plotted data.
 
-- Full original neural inference **was not rerun** in the archived auditing stage; group/pair statistics were reproduced from saved predictions, verified against original source row labels and SHA-256.
-- The exact historical RoBERTa model revision and complete inference libraries **are not known**. `analysis/check_local_checkpoint.py` reports only the model's **current** revision, which must not be misrepresented as the historical revision.
-- GOP duplicate retention shifts the descriptive estimand from unique expressions to message-occurrence-weighted records; it materially affects results.
-- Public and target-directed supplementary datasets are not interchangeable with these whole-tweet main benchmarks.
-- The source archives are convenience samples and lack platform-exposure or person-level representativeness.
+## Files
 
-## Original research responsibility
+- `supplementary_tables/`: S1–S8 full-precision CSVs.
+- `Supplementary_Tables_S1_S8.md`: readable tables with units and interpretation.
+- `audit/aggregates/`: original main summaries and regenerated original split records.
+- `audit/revision/`: reference checks, shrinkage and pairset summaries, and conditional bootstrap aggregate records.
+- `analysis/`: executable statistical scripts and verification checks.
+- `audit/REVISION_RUNTIME.json`: current statistical runtime, not a reconstruction of historical inference versions.
+- `docs/INFERENCE_PROTOCOL.md`: historical partial inference notes; missing revision/version information remains missing.
+- `figures/`: rebuilt Figures 1–3 as 600 dpi PNG and vector PDF/SVG.
+- `revision_changes.json`: paragraph-level before/after revision record.
+- `02_Revision_Verification_and_Action_Log.md`: Chinese item-by-item verification and author actions.
 
-The author must validate the draft, the data-use conditions, any licensing choice, ethical applicability, and AI-assistance declaration before depositing this publicly or submitting the manuscript. `LICENSE_PENDING.md` and `docs/RELEASE_CHECKLIST.md` are intentional unresolved gates.
+## Boundaries
 
-## Manuscript tables and reproducibility gates
+The exact historical RoBERTa commit, tokenizer snapshot, VADER package version, complete inference environment, and prediction-generation timestamps remain unavailable. Current software cannot be retrospectively asserted as those versions. New source inference would be a separately documented replication. Only archived prediction-based statistics are reproduced here. Brand-target and SemEval historical supplement results were not fully rerun in this revision and remain limited construct/leakage diagnostics.
 
-See `docs/MANUSCRIPT_TABLE_MAP.md` for the source of **each of the six main tables**. The archive now includes the 8,000 aggregate repeated-split outcomes from airline calibration and 4,800 such outcomes from GOP calibration. These records contain repeated-split summary statistics, not individual post text or account data. The saved aggregate outcomes can be independently re-aggregated, but **only** GOP's split-generation is rerun by `analysis/reproduce_analysis.py` when the locally archived row predictions are supplied.
+The source data are historical curated/convenience archives, not samples of current public attitudes. Splits, bootstrap replicates, and group pairs are dependent. Their quantiles are conditional archive variability. The new k grid does not establish an optimal deployment parameter. Institutional ethics/consent applicability remains undetermined. The author has authorized MIT release of eligible original code and is willing to support editorial source-level verification through the procedure in `docs/REVIEWER_ACCESS.md`. A specific confidential channel has not yet been agreed with the journal. No DOI, ethics approval, existing public repository access, or unrestricted raw-data distribution permission is claimed.
 
-Run `python analysis/verify_archive_tables.py` before uploading or tagging a release. It checks exact summary reaggregation, main numerical claims, and the original reference-gap subsets.
+## Licensing and editorial access
 
-**Repository status:** Private GitHub staging only until copyright, license, model-revision disclosures, ethics applicability, manuscript declarations, and author review have been resolved. Do not claim an actual Zenodo DOI until Zenodo assigns one.
+The author's code authorization has been implemented in `LICENSE`. Dataset provenance and current source-license evidence are in `THIRD_PARTY_NOTICES.md`, `docs/DATA_PROVENANCE.md` and `docs/LICENSE_EVIDENCE.md`. The four required individual inputs already exist in the author's archive. `docs/REVIEWER_ACCESS.md` explains direct source retrieval, digest matching and, if necessary, a restricted journal-arranged verification route. This is not an offer to relicense source records under MIT. Public availability and institutional ethics status are independent facts and will be updated only when actually established.

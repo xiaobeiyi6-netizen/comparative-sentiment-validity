@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-16",
+  "purpose": "statistical reproduction and revision sensitivities; not historical model inference",
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
+    "python-docx": "1.2.0"
+  },
+  "seeds": {
+    "airline_budget": 20261015,
+    "gop_budget": 20261016,
+    "account_bootstrap": 20261016
+  },
+  "budget_repetitions": 200,
+  "account_bootstrap_repetitions": 2000,
+  "historical_neural_inference_rerun": false
+}

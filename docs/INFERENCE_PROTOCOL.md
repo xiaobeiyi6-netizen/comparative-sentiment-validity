@@ -9,3 +9,4 @@ Source notebooks from the analyst archive specify:
 - The GOP audit records Python 3.13.16, pandas 2.2.3, numpy 2.1.3. Airline metadata recorded PyTorch 2.11.0+cpu, no GPU. These are partial historical records, not a complete lockfile.
 
 Re-running inference with today's downloads is a *new replication run*. It must be labeled as such and compared row by row with archived outputs rather than silently replacing historical predictions. The analysis script in this release deliberately starts from previously archived predictions, preserving the historical outcome.
+

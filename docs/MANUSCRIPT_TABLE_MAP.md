@@ -17,3 +17,4 @@
 - The **airline budget analysis** is preserved as observed repeated-split results; the original Colab experiment code and further provenance remain in the researcher's private archive. Re-aggregation of its saved splits can be independently checked with `analysis/verify_archive_tables.py`. This does **not** constitute a fresh rerun from raw tweets of every airline calibration split.
 - Raw file hashes in `audit/original_source_hashes.json` validate exact byte identity only, not licenses or future availability.
 - The English manuscript, author declarations, and IRB status require author review before journal submission.
+

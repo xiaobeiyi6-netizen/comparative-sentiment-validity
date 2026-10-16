@@ -1,0 +1,20 @@
+{
+  "source_hashes": {
+    "Tweets.csv": "ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e",
+    "GOP_REL_ONLY.csv": "413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86"
+  },
+  "airline_row_alignment": 14640,
+  "gop_row_alignment": 4483,
+  "gop_exclusions": {
+    "no_candidate_mentioned": 7491,
+    "candidate_missing": 96,
+    "additional_invalid_label_or_empty_text": 0
+  },
+  "gop_duplicate_groups": 150,
+  "gop_conflicting_label_groups": 60,
+  "gop_cross_candidate_texts": 5,
+  "gop_duplicate_surplus": 1801,
+  "majority_label_changes": 15,
+  "majority_tie_rule": "original first occurrence among tied modal sentiment categories",
+  "raw_data_and_model_inference_redistributed": false
+}

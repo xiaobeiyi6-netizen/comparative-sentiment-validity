@@ -1,0 +1,42 @@
+{
+  "source_hashes_recalculated": true,
+  "airline_row_alignment": 14640,
+  "gop_row_alignment": 4483,
+  "airline_budget_summary_combinations": 40,
+  "gop_budget_summary_combinations": 24,
+  "maximum_absolute_summary_difference": 0.0,
+  "sensitivity_k100_matches_original_summaries": true,
+  "source_and_label_audit": {
+    "source_hashes": {
+      "Tweets.csv": "ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e",
+      "GOP_REL_ONLY.csv": "413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86"
+    },
+    "airline_row_alignment": 14640,
+    "gop_row_alignment": 4483,
+    "gop_exclusions": {
+      "no_candidate_mentioned": 7491,
+      "candidate_missing": 96,
+      "additional_invalid_label_or_empty_text": 0
+    },
+    "gop_duplicate_groups": 150,
+    "gop_conflicting_label_groups": 60,
+    "gop_cross_candidate_texts": 5,
+    "gop_duplicate_surplus": 1801,
+    "majority_label_changes": 15,
+    "majority_tie_rule": "original first occurrence among tied modal sentiment categories",
+    "raw_data_and_model_inference_redistributed": false
+  },
+  "original_inference_reexecuted": false,
+  "institutional_ethics_finalized": false,
+  "public_repository_released": false,
+  "public_code_license_finalized": true,
+  "original_auxiliary_task_analyses_fully_rerun_in_revision": false,
+  "source_commit_sha": "5eb5ad7ef3aa5fcb80f16e0028198c75c2afbe58",
+  "source_git_tree_sha": "76d420990a4aa9c0422178d494f576f4db6dddc0",
+  "original_code_license": "MIT",
+  "author_approved_public_code_release": true,
+  "author_willing_restricted_editorial_verification": true,
+  "review_protocol_prepared": true,
+  "editorial_channel_agreed": false,
+  "dataset_license_evidence_recorded": true
+}

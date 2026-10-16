@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Beiyi Xiao
 """Tiny deterministic algebra checks; no results in these tests come from study participants."""
 import unittest
 class TestReversalIdentity(unittest.TestCase):
@@ -13,3 +15,4 @@ class TestReversalIdentity(unittest.TestCase):
     def test_pair_tie_is_not_strict_reversal(self):
         self.assertFalse((.8-.6)*(.3-.3)<0)
 if __name__=='__main__':unittest.main()
+

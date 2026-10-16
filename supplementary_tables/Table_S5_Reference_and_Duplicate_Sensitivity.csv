@@ -1,0 +1,13 @@
+variant,model,n,groups,pairs,reference_ties,predicted_ties,reversals,group_MAE_pp
+Airline primary,VADER,14640,6,15,0,0,3,27.131840962500814
+Airline primary,RoBERTa,14640,6,15,0,0,0,3.677453141076079
+Airline confidence 1,VADER,10445,6,15,0,0,3,28.93585801539567
+Airline confidence 1,RoBERTa,10445,6,15,0,0,0,2.5645411631977506
+GOP primary,VADER,4483,10,45,0,0,7,25.19629295430371
+GOP primary,RoBERTa,4483,10,45,0,0,7,16.000934611142238
+GOP majority labels,VADER,4483,10,45,0,0,7,25.37349153671998
+GOP majority labels,RoBERTa,4483,10,45,0,0,7,16.1781331935585
+GOP exclude cross-candidate texts,VADER,4478,10,45,0,0,7,25.228299838508505
+GOP exclude cross-candidate texts,RoBERTa,4478,10,45,0,0,7,16.016945952073602
+GOP repeated records,VADER,6284,10,45,0,0,16,26.67584187690368
+GOP repeated records,RoBERTa,6284,10,45,0,0,5,17.42527215300113

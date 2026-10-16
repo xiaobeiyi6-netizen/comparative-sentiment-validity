@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Beiyi Xiao
 """Re-aggregate archived predictions: audit group-specific errors and simulate limited-label calibration
 on already-human-annotated real GOP tweets, with leakage-free held-out evaluation.
 
@@ -259,3 +261,4 @@ print(summary_pairs.to_string(index=False))
 print('GOP CALIBRATION SUMMARY')
 print(summ[['budget_per_group','model','method','mean_absolute_error_pp_mean','reversal_rate_all_mean','reversal_rate_fixed_gap10_mean']].to_string(index=False))
 print('FILES WRITTEN',len(list(OUT.glob('*'))))
+

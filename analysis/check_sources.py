@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Beiyi Xiao
 """SHA256 verification for locally sourced original research inputs; no network needed."""
 from __future__ import annotations
 import argparse,hashlib,json
@@ -16,3 +18,4 @@ for filename,want in expected.items():
  print(('PASS' if ok else 'FAIL')+': '+filename+'; SHA256='+got)
  good &= ok
 if not good:raise SystemExit(1)
+

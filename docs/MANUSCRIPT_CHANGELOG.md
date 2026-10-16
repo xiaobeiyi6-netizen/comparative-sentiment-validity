@@ -1,14 +1,5 @@
-# 2026-10-16 manuscript-only changes (no outcome data changed)
+# Current revision changes
 
-- Added five verified (2024–2025) sources about CSS validity, misclassification, deduplication and bias.
-- Expanded Introduction and Discussion to distinguish comparative descriptive reversals from known classifier/regression bias.
-- Repaired two formula paragraphs where symbols had dropped out of a previous Word transformation (Discussion error decomposition; Appendix A2 ACC specification).
-- Replaced an inapplicable coauthor-approval phrase in Appendix A5 with a sole-author responsibility check.
-- **No changes** to source data, model predictions, statistical estimates, plotted figures, original 6 tables, or unresolved institutional ethics status.
-- Updated version remains **NOT READY TO SUBMIT**: ethics applicability/consent, model historical checkpoint, final author responsibility, code license, and permanent deposit identifier are not complete.
+The prior manuscript-only notes are superseded by the full item-by-item record in `02_Revision_Verification_and_Action_Log.md`. The revision narrowed the title/abstract, clarified estimator formulas and ties, reran the two original budget protocols, added reference-label/shrinkage/pairset/account-cluster sensitivities, regenerated three figures, standardized numeric citations and revised the declarations.
 
-## 2026-10-16 public candidate audit
-- Added a source-to-manuscript map for Tables 1–6, including separate airline/GOP limited-label calibration archives.
-- Archived only non-message-level repeated-split aggregate statistics (8,000 airline; 4,800 GOP).
-- Added an offline aggregate consistency test that does not require tweet text or row predictions.
-- Corrected Appendix A5 in the author review manuscript: both historical source SHA-256 hashes have already been verified; historical neural model checkpoint remains unverified.
+Following author authorization, MIT code licensing, third-party attribution and a proposed editorial source-verification procedure have been added. Core full-corpus reversals remain unchanged. No historical neural inference rerun, institutional approval, journal agreement, public repository visibility, or DOI is asserted.

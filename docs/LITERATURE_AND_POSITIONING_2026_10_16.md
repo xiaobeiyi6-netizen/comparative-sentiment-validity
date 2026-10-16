@@ -50,3 +50,4 @@ Hase, V., Bachl, M., & TeBlunthuis, N. (2025). Critical, but constructive: Defin
 3. Use Hase et al. (2025) to position bias as a measurement problem in CSS, not as an invented new observation.
 4. Explain that human-only direct estimates often beat sophisticated calibration under the GOP label budgets tested.
 5. Keep the 2025 NLP review as broad context only, if space permits.
+

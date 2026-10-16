@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Beiyi Xiao
 """Validate repository file byte hashes against the audit manifest."""
 from pathlib import Path
 import json, hashlib
@@ -12,3 +14,4 @@ for rel,expected in d['sha256_by_relative_path'].items():
     actual=hashlib.sha256(p.read_bytes()).hexdigest()
     assert actual==expected,f'Hash mismatch: {rel}'
 print(f"PASS: {len(d['sha256_by_relative_path'])} repository files verified (excluding manifest itself)")
+

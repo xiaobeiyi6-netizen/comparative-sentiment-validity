@@ -1,8 +1,10 @@
 cff-version: 1.2.0
-message: "Please cite the associated journal article and the archived software release if used."
-title: "Comparative Sentiment Validity: Reproducibility and Audit Code"
+message: "Please cite the associated manuscript and this code repository. No release DOI has been issued."
+title: "Comparative Sentiment Validity Statistical Audit Code"
 authors:
   - family-names: "Xiao"
     given-names: "Beiyi"
-version: "0.1.1-prepublication"
+version: "0.2.0-prepublication"
 type: software
+repository-code: "https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity"
+license: MIT

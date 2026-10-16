@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Beiyi Xiao
 """Audit supplementary aggregate tables without sharing message-level records.
 Run: python analysis/verify_archive_tables.py
 Dependencies: pandas, numpy; no network or original tweet text needed.
@@ -112,3 +114,4 @@ for model,method,mae,rev,gaprev in [
 print('PASS: Airline 8,000 and GOP 4,800 split-level summary rows reaggregated exactly.')
 print('PASS: Core metrics, all pair reversals and 3/5/10pp sensitivity, manuscript Tables 1-6 matched.')
 print('CAUTION: Original model inference and airline split-generation were NOT rerun by this aggregate-only audit.')
+
