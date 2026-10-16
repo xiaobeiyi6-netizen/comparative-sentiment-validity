@@ -51,6 +51,25 @@ for r in s3.itertuples(index=False):
     close(r.bias_pp,100*(r.FP-r.FN)/r.n,'FP-FN identity')
     close(r.bias_pp,r.FP_component_pp+r.FN_component_pp,'S3 error decomposition')
 
+# Guard against confusing whole-corpus prevalence with the final pairwise
+# difference (a known reporting bug in an earlier standalone review ZIP).
+table1 = pd.read_csv(AUDIT / 'main_metrics.csv')
+assert len(table1) == 4
+for (corpus, model), d in s3.groupby(['corpus', 'model']):
+    n = int(d.n.sum())
+    gold_share = 100 * int((d.TP + d.FN).sum()) / n
+    predicted_share = 100 * int((d.TP + d.FP).sum()) / n
+    binary_accuracy = 100 * int((d.TP + d.TN).sum()) / n
+    row = table1[(table1.corpus == corpus) & (table1.model == model)]
+    assert len(row) == 1
+    row = row.iloc[0]
+    assert n == int(row.n)
+    assert 0 <= predicted_share <= 100
+    close(gold_share, row.gold_negative_pct, f'Table 1 {corpus} gold', tol=0.00011)
+    close(predicted_share, row.pred_negative_pct, f'Table 1 {corpus} prediction', tol=0.00011)
+    close(binary_accuracy, row.accuracy_pct, f'Table 1 {corpus} binary accuracy', tol=0.00011)
+    print(f'TABLE 1 VERIFIED: {corpus} / {model}; negative prediction {predicted_share:.4f}%')
+
 observed = base_pairs.groupby(['corpus','model']).reversed.sum().to_dict()
 assert observed == {('Airline','RoBERTa'):0,('Airline','VADER'):3,
                     ('GOP','RoBERTa'):7,('GOP','VADER'):7}
