@@ -6,3 +6,9 @@
 - Replaced an inapplicable coauthor-approval phrase in Appendix A5 with a sole-author responsibility check.
 - **No changes** to source data, model predictions, statistical estimates, plotted figures, original 6 tables, or unresolved institutional ethics status.
 - Updated version remains **NOT READY TO SUBMIT**: ethics applicability/consent, model historical checkpoint, final author responsibility, code license, and permanent deposit identifier are not complete.
+
+## 2026-10-16 public candidate audit
+- Added a source-to-manuscript map for Tables 1–6, including separate airline/GOP limited-label calibration archives.
+- Archived only non-message-level repeated-split aggregate statistics (8,000 airline; 4,800 GOP).
+- Added an offline aggregate consistency test that does not require tweet text or row predictions.
+- Corrected Appendix A5 in the author review manuscript: both historical source SHA-256 hashes have already been verified; historical neural model checkpoint remains unverified.

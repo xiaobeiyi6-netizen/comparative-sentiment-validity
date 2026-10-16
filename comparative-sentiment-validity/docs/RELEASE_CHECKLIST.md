@@ -1,6 +1,7 @@
 # Review before releasing a public repository or Zenodo DOI
 
 - [ ] Author confirms all code was reviewed and repository contents are accurate.
+- [x] Archive six-table mapping and safe repeated-split aggregate outcomes; verify using `python analysis/verify_archive_tables.py`.
 - [ ] No raw text, user handles, private contact data, row-level unique hashes/predictions, access tokens, or private paths included.
 - [ ] Source dataset terms and license compatibility have been checked and documented.
 - [ ] Author selects and adds a code license; none is granted by `LICENSE_PENDING.md`.

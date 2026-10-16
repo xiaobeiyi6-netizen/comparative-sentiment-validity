@@ -4,5 +4,5 @@ title: "Comparative Sentiment Validity: Reproducibility and Audit Code"
 authors:
   - family-names: "Xiao"
     given-names: "Beiyi"
-version: "0.1.0-prepublication"
+version: "0.1.1-prepublication"
 type: software
