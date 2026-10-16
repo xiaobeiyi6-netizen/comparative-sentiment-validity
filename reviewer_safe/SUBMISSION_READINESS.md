@@ -11,13 +11,19 @@
 - Main aggregate audit checks 8,000 airline and 4,800 GOP repeated-split results, with 1,104 summary mean/quantile cells.
 - Original historical RoBERTa revision and full inference environment remain unavailable. Preserve this limitation in manuscript and availability statements.
 
+## Author approval status (confirmed 16 October 2026)
+
+Beiyi Xiao confirmed in the author conversation that they are the **sole author**; the article has not been published elsewhere or simultaneously submitted; the contribution, empirical results and OpenAI ChatGPT disclosures are accurate; and the revised manuscript is approved as the **basis for an eventual Applied Sciences submission**. This is an author statement, not external verification and **not** an actual journal submission.
+
+The article's Author Contributions paragraph has therefore been finalized in the private author-confirmed Word manuscript. Editorial ethics-applicability wording and third-party data-release permissions remain unresolved separately.
+
 ## Submission blockers
 
 1. **Ethics:** The author previously supplied draft wording asserting an ethics exemption, but an applicable, independently verifiable institutional or statutory determination has not been established. Do not claim approval or exemption without one; journals may request documentation.
 2. **Informed consent:** Use accurate, journal-appropriate wording for existing social-media secondary data; no invented individual consent.
 3. **Data availability:** Distinguish third-party historical CSV sources, non-public row predictions, private audit repository and any code or aggregate results actually released. Original tweet redistribution rights have not been established.
 4. **Code license:** Prior MIT suggestion is a proposal only; there is no enacted code license solely because a draft exists. Check authorship and third-party code before adding a license.
-5. **Final author review:** The author must inspect all data interpretations and claims, AI-assistance disclosure, funding, conflicts, contribution details, and the submitted manuscript.
+5. **Final author review:** Author confirmed the existing manuscript as submission basis on 16 October 2026; author must still review the actual final uploaded PDF and any later changes before clicking submit.
 6. **Journal status:** Check current official Applied Sciences instructions and Web of Science SCIE coverage immediately before submission.
 
 No public release, DOI, journal submission, reviewer access agreement, or institutional ethics decision was created by this audit synchronization.
