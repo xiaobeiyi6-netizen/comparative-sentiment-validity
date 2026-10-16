@@ -1,0 +1,16 @@
+private_inputs/
+reproduced_outputs/
+*.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.vscode/
+.DS_Store
+**/Tweets.csv
+**/GOP_REL_ONLY.csv
+**/airline_predictions.csv
+**/gop_external_validation_results.zip
+**/row_predictions_and_overlap_flags.csv
+**/*text_sha256*.csv
+**/raw_*.csv
