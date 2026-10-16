@@ -1,0 +1,5 @@
+corpus,model,n,accuracy_pct,gold_negative_pct,pred_negative_pct,group_MAE_pp
+Airline,VADER,14640,61.9126,62.6913,30.4918,27.1318
+Airline,RoBERTa,14640,86.2295,62.6913,58.8934,3.6775
+GOP,VADER,4483,58.7553,58.5545,30.3368,25.1963
+GOP,RoBERTa,4483,68.994,58.5545,42.36,16.0009

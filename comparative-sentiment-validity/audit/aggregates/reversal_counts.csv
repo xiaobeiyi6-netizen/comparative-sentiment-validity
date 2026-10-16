@@ -1,0 +1,5 @@
+corpus,model,pairs,reversals
+Airline,RoBERTa,15,0
+Airline,VADER,15,3
+GOP,RoBERTa,45,7
+GOP,VADER,45,7

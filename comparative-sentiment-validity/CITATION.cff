@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Please cite the associated journal article and the archived software release if used."
+title: "Comparative Sentiment Validity: Reproducibility and Audit Code"
+authors:
+  - family-names: "Xiao"
+    given-names: "Beiyi"
+version: "0.1.0-prepublication"
+type: software

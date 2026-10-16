@@ -1,0 +1,7 @@
+# Draft manuscript statements — review and revise, not for blind copy-paste
+
+**Data Availability Statement (provisional)**: The analyses use two previously released, human-labeled Twitter datasets: the Twitter US Airline Sentiment corpus and the CrowdFlower First GOP Debate Twitter Sentiment corpus. Original source locations, SHA-256 fingerprints, statistical reproduction code, and aggregate comparison tables are documented in the accompanying research package. Redistribution of full historical tweet text and account metadata is not included in this package because the original distribution and platform restrictions have not been independently resolved. A versioned repository DOI and its actual link will be added after deposit. Archived model predictions were used to reproduce the reported downstream statistical analyses; complete rerun of the historical RoBERTa inference with the original revision is not claimed.
+
+**Ethics disclosure**: The manuscript's ethics and consent statements remain **unresolved**, pending verification of the legal/institutional applicability for secondary analyses of publicly released social-media archives. Do not state that an institutional approval or exemption exists without documentary basis.
+
+**AI use**: OpenAI ChatGPT assisted with research design, code drafts, statistical analysis, literature exploration, and manuscript drafts. The author must review inputs and outputs and disclose substantively as required by the journal.

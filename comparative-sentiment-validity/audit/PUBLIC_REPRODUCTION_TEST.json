@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-16",
+  "original_raw_sha256_verified": true,
+  "unit_tests_passed": 3,
+  "historical_numeric_comparisons": {
+    "gop_calibration_budget_summary.csv": {
+      "rows": 24,
+      "max_numeric_abs_difference": 0.0
+    },
+    "gop_calibration_paired_differences.csv": {
+      "rows": 120,
+      "max_numeric_abs_difference": 0.0
+    },
+    "group_confusion_error_decomposition.csv": {
+      "rows": 32,
+      "max_numeric_abs_difference": 0.0
+    },
+    "pairwise_bias_reversal_mechanism.csv": {
+      "rows": 120,
+      "max_numeric_abs_difference": 0.0
+    }
+  },
+  "archived_model_predictions_reused": true,
+  "historical_neural_checkpoint_commit_verified": false,
+  "raw_tweets_in_public_repo": false,
+  "privacy_sensitive_hashes_in_public_repo": false,
+  "publication_doi_created": false
+}
