@@ -2,6 +2,6 @@
 
 The repository is already established. The original private-first upload instructions are superseded by this release preparation. Do not upload the source records or prediction archives.
 
-The author has authorized code release. MIT applies to eligible original code as specified in `LICENSE_SCOPE.md`. This commit contains statistical code, safe group/split aggregates, source notices and the editorial access procedure. Raw inputs stay separate. Confirm public visibility in the repository settings; do not infer it from a successful commit. The author-facing steps are in `docs/作者上传与Zenodo操作_中文.md`.
+The author has authorized code release. MIT applies to eligible original code as specified in `LICENSE_SCOPE.md`. This commit contains statistical code, safe group/split aggregates, source notices and the editorial access procedure. Raw inputs stay separate. Public visibility has been confirmed from repository metadata after the code update. The author-facing steps are in `docs/作者上传与Zenodo操作_中文.md`.
 
-Once public, verify the actual URL and record a release commit. A later persistent archive can receive a genuine DOI. Until then, cite the repository and exact code version without inventing an identifier. Institutional ethics/consent determination remains a separate manuscript requirement.
+The public repository and audited code commit are recorded in the README. A later persistent archive can receive a genuine DOI. Until then, cite the repository and exact code version without inventing an identifier. Institutional ethics/consent determination remains a separate manuscript requirement.

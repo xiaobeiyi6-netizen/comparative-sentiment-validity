@@ -6,4 +6,4 @@ The MIT grant does not relicense third-party datasets, tweet text, account metad
 
 Dataset publishers identify the two source corpora as CC BY-NC-SA 4.0. This is a conditional source license, not an unrestricted public-domain dedication. See `THIRD_PARTY_NOTICES.md`, `docs/DATA_PROVENANCE.md`, and `docs/LICENSE_EVIDENCE.md`. Publicly releasing eligible code does not depend on retrospectively inventing ethics approval or a historical model revision. Those research disclosures remain separate.
 
-This package grants code reuse rights now. It does not claim that the development repository is already public, that a journal has accepted restricted-data arrangements, or that a DOI has been issued.
+This package grants code reuse rights now. The repository has been verified as public. This does not establish that a journal has accepted restricted-data arrangements or that a DOI has been issued.

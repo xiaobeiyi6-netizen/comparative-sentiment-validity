@@ -28,7 +28,7 @@
   },
   "original_inference_reexecuted": false,
   "institutional_ethics_finalized": false,
-  "public_repository_released": false,
+  "public_repository_released": true,
   "public_code_license_finalized": true,
   "original_auxiliary_task_analyses_fully_rerun_in_revision": false,
   "source_commit_sha": "5eb5ad7ef3aa5fcb80f16e0028198c75c2afbe58",
@@ -38,5 +38,10 @@
   "author_willing_restricted_editorial_verification": true,
   "review_protocol_prepared": true,
   "editorial_channel_agreed": false,
-  "dataset_license_evidence_recorded": true
+  "dataset_license_evidence_recorded": true,
+  "public_repository_accessible": true,
+  "public_visibility_evidence": "GitHub repository API returned visibility=public",
+  "audited_public_code_commit": "0e37fa4715f3f30de9151b849b7b23b2b791fad0",
+  "release_doi_created": false,
+  "tagged_release_created": false
 }
