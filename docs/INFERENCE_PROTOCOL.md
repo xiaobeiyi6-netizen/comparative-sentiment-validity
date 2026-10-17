@@ -14,3 +14,7 @@ Re-running inference with today's downloads is a *new replication run*. It must 
 ## Completed new replication
 
 A new fixed-revision run on 17 October 2026 matched all primary binary predictions. This does not resolve the historical revision. Full new-run settings and hashes are in audit/locked_inference/runtime_and_model_lock.json; instructions and scope are in LOCKED_MODEL_REPLICATION.md. The script retains archived results for downstream comparisons.
+
+## Explicit input handling
+
+Airline uses original stored text; GOP strips outer whitespace. HTML/NFKC/case/space normalization defines duplicate matching, not model input. No explicit @user or http replacement is added. VADER’s own token handling recognizes @United as united. The model-card placeholder recipe is a different input protocol. S11–S12 do not replace primary predictions or validate an optimized pipeline.

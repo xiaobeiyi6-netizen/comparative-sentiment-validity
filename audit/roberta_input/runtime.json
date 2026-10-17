@@ -1,0 +1,80 @@
+{
+  "status": "COMPLETED_PAIRED_INPUT_INFERENCE",
+  "recorded_utc": "2026-10-17T07:02:45.378942+00:00",
+  "model_id": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+  "model_commit": "3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7",
+  "model_files": {
+    ".pytorch_model.bin.4qFGar": {
+      "bytes": 341573632,
+      "sha256": "838c71c59f90012bc629f2dd541e55f553c2587dd72861df97e8d63401f48f46"
+    },
+    ".pytorch_model.bin.4qFGar.8qXPjQ": {
+      "bytes": 144179200,
+      "sha256": "8f3db364ec2cbcc106f1395a61df7817435611dd58e0adcabf6ecb25ce5a47e5"
+    },
+    "README.md": {
+      "bytes": 4328,
+      "sha256": "05ad85143ed60f0abe631ab935485db046c24710d9bec50829b017cfc1e12bf7"
+    },
+    "config.json": {
+      "bytes": 929,
+      "sha256": "d2fba19997da698157196ba16f5fcb30a97a7551cef6845a0f3d743ee19c6129"
+    },
+    "merges.txt": {
+      "bytes": 456318,
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5"
+    },
+    "pytorch_model.bin": {
+      "bytes": 501045531,
+      "sha256": "4d24a3e32a88ed1c4e5b789fc6644e2e767500554e954b27dccf52a8e762cbae"
+    },
+    "special_tokens_map.json": {
+      "bytes": 239,
+      "sha256": "378eb3bf733eb16e65792d7e3fda5b8a4631387ca04d2015199c4d4f22ae554d"
+    },
+    "vocab.json": {
+      "bytes": 898822,
+      "sha256": "06b4d46c8e752d410213d9548eb27a54db70fda0319b6271fb8d59dead5e1cab"
+    }
+  },
+  "source_input_sha256": {
+    "Tweets.csv": "ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e",
+    "airline_predictions.csv": "5674f3e56dc3667344ab43c867ee8dd4f61126823950524c3f5cd54d92f9eda2",
+    "GOP_REL_ONLY.csv": "413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86",
+    "gop_external_validation_results.zip": "8a93da7db63b6d2f5c0c2daec0faabdbab0b8cf7be415b1af30e3d49636968e7"
+  },
+  "python": "3.12.14",
+  "software_versions": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.18.0",
+    "tokenizers": "0.23.2",
+    "huggingface_hub": "1.33.0",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "device": "cpu",
+  "cpu_threads": 8,
+  "seed": 20261017,
+  "dtype": "float32",
+  "attention": "eager",
+  "deterministic_algorithms": true,
+  "tokenizer_class": "RobertaTokenizer",
+  "tokenizer_model_max_length": 1000000000000000019884624838656,
+  "architecture_max_sequence_tokens_including_specials": 512,
+  "protocol": {
+    "Airline": {
+      "batch_size": 32,
+      "explicit_max_length": null,
+      "records": 14640
+    },
+    "GOP": {
+      "batch_size": 24,
+      "explicit_max_length": 128,
+      "records": 4483
+    }
+  },
+  "preprocessing": "Exact pinned model-card space-token algorithm; raw protocol otherwise unchanged",
+  "code_sha256": "00c71a0b4faa46aa2b154c0b3d8df89b06fe15821cfc33fcefaf1ee7d2803fd4",
+  "raw_binary_agreement_verified": true,
+  "historical_environment_recovered": false
+}

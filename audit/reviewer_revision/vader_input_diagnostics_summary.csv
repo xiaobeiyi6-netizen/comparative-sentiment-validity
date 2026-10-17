@@ -1,0 +1,8 @@
+variant,model,n,groups,pairs,reference_ties,predicted_ties,reversals,group_MAE_pp,binary_changes_from_original
+Original input,VADER,14640,6,15,0,0,3,27.131840962500814,0
+All mention placeholders,VADER,14640,6,15,0,0,0,23.89856316544731,743
+URL placeholders,VADER,14640,6,15,0,0,3,27.13934171257582,1
+Model-card token placeholders,VADER,14640,6,15,0,0,0,23.957171852061656,735
+United handle only masked,VADER,14640,6,15,0,0,0,23.88848096837085,743
+Bare United only masked,VADER,14640,6,15,0,0,3,26.971814214040357,44
+United lexicon entry removed,VADER,14640,6,15,0,0,1,23.732814938556825,782

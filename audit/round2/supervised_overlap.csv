@@ -1,0 +1,37 @@
+corpus,supervised_split,group,n,matching_records,matching_unique_normalized_texts
+Airline,train,ALL,14640,0,0
+Airline,train,American,2759,0,0
+Airline,train,Delta,2222,0,0
+Airline,train,Southwest,2420,0,0
+Airline,train,US Airways,2913,0,0
+Airline,train,United,3822,0,0
+Airline,train,Virgin America,504,0,0
+GOP,train,ALL,4483,1,1
+GOP,train,Ben Carson,359,0,0
+GOP,train,Chris Christie,181,0,0
+GOP,train,Donald Trump,2047,0,0
+GOP,train,Jeb Bush,344,0,0
+GOP,train,John Kasich,222,1,1
+GOP,train,Marco Rubio,261,0,0
+GOP,train,Mike Huckabee,278,0,0
+GOP,train,Rand Paul,240,0,0
+GOP,train,Scott Walker,225,0,0
+GOP,train,Ted Cruz,326,0,0
+Airline,val,ALL,14640,0,0
+Airline,val,American,2759,0,0
+Airline,val,Delta,2222,0,0
+Airline,val,Southwest,2420,0,0
+Airline,val,US Airways,2913,0,0
+Airline,val,United,3822,0,0
+Airline,val,Virgin America,504,0,0
+GOP,val,ALL,4483,0,0
+GOP,val,Ben Carson,359,0,0
+GOP,val,Chris Christie,181,0,0
+GOP,val,Donald Trump,2047,0,0
+GOP,val,Jeb Bush,344,0,0
+GOP,val,John Kasich,222,0,0
+GOP,val,Marco Rubio,261,0,0
+GOP,val,Mike Huckabee,278,0,0
+GOP,val,Rand Paul,240,0,0
+GOP,val,Scott Walker,225,0,0
+GOP,val,Ted Cruz,326,0,0

@@ -1,0 +1,10 @@
+{
+  "version": "0.4.0-input-audit",
+  "source_labels_reused": true,
+  "new_human_annotations": false,
+  "current_model_inference": "COMPLETED_PAIRED_INPUT_INFERENCE",
+  "public_outputs": "code and aggregates only",
+  "original_input_budget_results_retained": true,
+  "tables": "S1-S24",
+  "main_table_renumbering": "old1-6 become2-7; new1 protocol; new8 common designs"
+}

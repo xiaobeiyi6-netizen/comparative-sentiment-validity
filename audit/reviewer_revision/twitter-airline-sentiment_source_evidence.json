@@ -1,0 +1,10 @@
+{
+  "checked_utc": "2026-10-17T03:51:56.331191+00:00",
+  "source_url": "https://www.kaggle.com/api/v1/datasets/view/crowdflower/twitter-airline-sentiment",
+  "title": "Twitter US Airline Sentiment",
+  "licenseName": "CC BY-NC-SA 4.0",
+  "dataset_last_updated": "2019-10-16T00:04:05.163Z",
+  "description_interpretation": "Task labels positive/neutral/negative airline-context tweets and then negative reasons. Supplied airline group retained; original group-generation procedure not fully documented.",
+  "annotation_manual_recovered": false,
+  "individual_rater_votes_recovered": false
+}

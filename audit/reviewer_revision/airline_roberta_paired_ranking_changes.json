@@ -1,0 +1,7 @@
+{
+  "budget": 400,
+  "repetitions": 200,
+  "group_ACC_better_than_CC": 50,
+  "group_ACC_tied_with_CC": 122,
+  "group_ACC_worse_than_CC": 28
+}

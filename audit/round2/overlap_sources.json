@@ -1,0 +1,14 @@
+{
+  "train": {
+    "sha256": "368f01052ea6fd8ffc408a2a2e6ac9669e31542581a0396ef16591ea26eb98a6",
+    "lines": 45615,
+    "unique_normalized_texts": 45585,
+    "url": "https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/sentiment/train_text.txt"
+  },
+  "val": {
+    "sha256": "e5b021e6fc45064c260b09814b803d8f56cada519c4d952d72f43d48a350a964",
+    "lines": 2000,
+    "unique_normalized_texts": 2000,
+    "url": "https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/sentiment/val_text.txt"
+  }
+}

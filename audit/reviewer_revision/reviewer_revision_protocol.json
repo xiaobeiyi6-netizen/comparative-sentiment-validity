@@ -1,0 +1,42 @@
+{
+  "design": "retrospective reuse of released human labels; no new human annotation",
+  "seed": 20261017,
+  "repetitions": 200,
+  "k": 100,
+  "nested_budgets": true,
+  "holdout_rounding": "ceil(.2*n) in both corpora for common message protocol",
+  "tie_rule": "exclude reference ties; report strict reversals and predicted ties; half penalty on ties",
+  "account_split": "global 20% of observed distinct account names without replacement; all messages of a selected account held out across groups",
+  "account_split_budgets": [
+    25,
+    50,
+    100
+  ],
+  "infeasible_split_budget_cells": [],
+  "finite_archive_target": "known sampled labels enter exactly; corrections apply only to unlabeled complement; human-only is random-sample proportion",
+  "primary_results_replaced": false,
+  "new_transformer_inference": false,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "source_checks": {
+    "source_hashes": {
+      "Tweets.csv": "ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e",
+      "GOP_REL_ONLY.csv": "413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86"
+    },
+    "airline_row_alignment": 14640,
+    "gop_row_alignment": 4483,
+    "gop_exclusions": {
+      "no_candidate_mentioned": 7491,
+      "candidate_missing": 96,
+      "additional_invalid_label_or_empty_text": 0
+    },
+    "gop_duplicate_groups": 150,
+    "gop_conflicting_label_groups": 60,
+    "gop_cross_candidate_texts": 5,
+    "gop_duplicate_surplus": 1801,
+    "majority_label_changes": 15,
+    "majority_tie_rule": "original first occurrence among tied modal sentiment categories",
+    "raw_data_and_model_inference_redistributed": false
+  }
+}

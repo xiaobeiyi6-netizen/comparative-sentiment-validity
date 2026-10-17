@@ -1,0 +1,11 @@
+feature,present,n,human_negatives,original_false_negatives,false_negative_rate_pct
+United handle,True,3822,2633,1945,73.87011014052412
+United handle,False,0,0,0,
+Bare United,True,216,162,142,87.65432098765432
+Bare United,False,3606,2471,1803,72.96641036017806
+Any leading mention,True,3728,2573,1900,73.84376214535561
+Any leading mention,False,94,60,45,75.0
+URL,True,243,143,112,78.32167832167832
+URL,False,3579,2490,1833,73.6144578313253
+Retweet text prefix,True,0,0,0,
+Retweet text prefix,False,3822,2633,1945,73.87011014052412

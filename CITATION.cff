@@ -1,10 +1,10 @@
 cff-version: 1.2.0
-message: "Please cite the associated manuscript and this code repository. No release DOI has been issued."
+message: "Please cite the associated manuscript and the immutable code commit. No release DOI has been issued."
 title: "Comparative Sentiment Validity Statistical Audit Code"
 authors:
   - family-names: "Xiao"
     given-names: "Beiyi"
-version: "0.2.0-prepublication"
+version: "0.4.0-input-audit"
 type: software
 repository-code: "https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity"
 license: MIT

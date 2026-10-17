@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-10-17T04:05:53.204243+00:00",
+  "verify_archive_tables": "PASS; 8000 airline and 4800 GOP split rows and primary tables reaggregated",
+  "verify_package": "PASS; error identities, k100 agreement, earlier sensitivities, locked-inference provenance",
+  "verify_reviewer_revision": "PASS; common/finite/account-disjoint and bootstrap summaries, diagnostics, fractions, ties and figure files",
+  "independent_external_authentication": false,
+  "new_human_annotations": false,
+  "public_github_reviewer_update_completed": false,
+  "primary_archived_neural_predictions_replaced": false
+}

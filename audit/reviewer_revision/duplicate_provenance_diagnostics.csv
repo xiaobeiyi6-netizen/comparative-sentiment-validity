@@ -1,0 +1,3 @@
+corpus,records,unique_normalized_texts,surplus_rows,repeated_text_groups,label_conflict_groups,cross_group_texts,repeated_tweet_id_groups,surplus_tweet_id_rows
+Airline,14640,14406,234,187,27,0,155,155
+GOP,6284,4483,1801,150,60,5,19,19

@@ -1,0 +1,3 @@
+variant,model,n,groups,pairs,reference_ties,predicted_ties,reversals,group_MAE_pp
+Airline unique normalized texts,VADER,14406,6,15,0,0,3,27.34420285888543
+Airline unique normalized texts,RoBERTa,14406,6,15,0,0,0,3.7072739907739676

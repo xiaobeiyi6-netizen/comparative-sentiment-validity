@@ -1,0 +1,14 @@
+{
+  "recorded_utc": "2026-10-17T07:07:22.097019+00:00",
+  "status": "PASS",
+  "checks": [
+    "verify_archive_tables.py",
+    "verify_package.py",
+    "verify_reviewer_revision.py",
+    "verify_round2.py",
+    "verify_release_integrity.py"
+  ],
+  "actual_input_inference_executed": true,
+  "statistical_diagnostic_rerun_scores_match": true,
+  "private_rows_excluded_from_public_tree": true
+}

@@ -2,7 +2,7 @@
 
 On 17 October 2026 the author executed the supplied Colab notebook on the two primary corpora. This is a new inference replication, not recovery of historical model identity. All 14,640 airline and 4,483 GOP binary predictions matched the archived outputs for VADER and RoBERTa. Airline three-class labels also matched; historical GOP three-class agreement cannot be tested with its binary archive.
 
-`audit/locked_inference/` supplies aggregate comparisons, the complete model/runtime lock, and independent downstream verification results. Table S9 contains the four model-by-corpus summaries. Raw tweet text, accounts, individual predictions, and row-level text hashes are excluded.
+`audit/locked_inference/` supplies aggregate comparisons, the complete model/runtime lock, and downstream rechecks using a separate script within the author’s AI-assisted workflow. Table S9 contains the four model-by-corpus summaries. Raw tweet text, accounts, individual predictions, and row-level text hashes are excluded.
 
 ## Execute with lawful private inputs
 

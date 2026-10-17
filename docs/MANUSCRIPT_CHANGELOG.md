@@ -5,4 +5,4 @@ The prior manuscript-only notes are superseded by the full item-by-item record i
 Following author authorization, MIT code licensing, third-party attribution and a proposed editorial source-verification procedure have been added. Core full-corpus reversals remain unchanged. Public repository visibility has subsequently been verified and the declarations updated. No historical neural inference rerun, institutional approval, journal agreement, or DOI is asserted.
 
 
-New fixed-revision inference replication completed on 17 October 2026. All primary binary predictions match; see docs/LOCKED_MODEL_REPLICATION.md. Historical identity remains unverified and ethics/consent remains pending.
+New fixed-revision inference replication completed on 17 October 2026. All primary binary predictions match; see docs/LOCKED_MODEL_REPLICATION.md. The reviewer revision adds input, label-allocation, common-implementation, finite-archive, account-disjoint and tie diagnostics; see docs/REVIEWER_REVISION_20261017.md. The revised secondary-analysis declarations state non-applicability without inventing approval, exemption or waiver numbers.

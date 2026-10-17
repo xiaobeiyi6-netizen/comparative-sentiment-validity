@@ -1,0 +1,9 @@
+{
+  "seed": 20261017,
+  "repetitions": 200,
+  "diagnostic_reruns_match_stored_results": true,
+  "Monte_Carlo_SE": "Sample SD of paired split differences / sqrt(200); simulation mean precision conditional on the fixed archive and protocol, not a population interval.",
+  "clipping_counts": "Only nonfallback corrections are counted below 0 or above 1; fallback is counted separately. Negative denominators include fallback groups.",
+  "clipping_ties": "New predicted ties among non-tied reference pairs created by clipping, evaluated after finite-archive recombination where applicable.",
+  "difference_direction": "Group ACC minus Human-only; negative favors Group ACC; ties use absolute tolerance 1e-12."
+}

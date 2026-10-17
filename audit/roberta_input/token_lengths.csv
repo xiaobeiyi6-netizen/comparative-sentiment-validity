@@ -1,0 +1,37 @@
+corpus,condition,group,n,max_tokens_with_specials,over128,over128_pct,actual_truncated,actual_truncated_pct,explicit_max_length,tokenizer_active_limit,architecture_capacity
+Airline,original,ALL,14640,132,1,0.006830601092896175,0,0.0,,,512
+Airline,original,American,2759,56,0,0.0,0,0.0,,,512
+Airline,original,Delta,2222,60,0,0.0,0,0.0,,,512
+Airline,original,Southwest,2420,62,0,0.0,0,0.0,,,512
+Airline,original,US Airways,2913,132,1,0.03432887058015791,0,0.0,,,512
+Airline,original,United,3822,59,0,0.0,0,0.0,,,512
+Airline,original,Virgin America,504,82,0,0.0,0,0.0,,,512
+Airline,model_card,ALL,14640,130,1,0.006830601092896175,0,0.0,,,512
+Airline,model_card,American,2759,55,0,0.0,0,0.0,,,512
+Airline,model_card,Delta,2222,59,0,0.0,0,0.0,,,512
+Airline,model_card,Southwest,2420,60,0,0.0,0,0.0,,,512
+Airline,model_card,US Airways,2913,130,1,0.03432887058015791,0,0.0,,,512
+Airline,model_card,United,3822,57,0,0.0,0,0.0,,,512
+Airline,model_card,Virgin America,504,66,0,0.0,0,0.0,,,512
+GOP,original,ALL,4483,123,0,0.0,0,0.0,128.0,,512
+GOP,original,Ben Carson,359,59,0,0.0,0,0.0,128.0,,512
+GOP,original,Chris Christie,181,60,0,0.0,0,0.0,128.0,,512
+GOP,original,Donald Trump,2047,123,0,0.0,0,0.0,128.0,,512
+GOP,original,Jeb Bush,344,69,0,0.0,0,0.0,128.0,,512
+GOP,original,John Kasich,222,64,0,0.0,0,0.0,128.0,,512
+GOP,original,Marco Rubio,261,79,0,0.0,0,0.0,128.0,,512
+GOP,original,Mike Huckabee,278,61,0,0.0,0,0.0,128.0,,512
+GOP,original,Rand Paul,240,59,0,0.0,0,0.0,128.0,,512
+GOP,original,Scott Walker,225,65,0,0.0,0,0.0,128.0,,512
+GOP,original,Ted Cruz,326,69,0,0.0,0,0.0,128.0,,512
+GOP,model_card,ALL,4483,123,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Ben Carson,359,50,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Chris Christie,181,47,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Donald Trump,2047,123,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Jeb Bush,344,69,0,0.0,0,0.0,128.0,,512
+GOP,model_card,John Kasich,222,64,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Marco Rubio,261,79,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Mike Huckabee,278,61,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Rand Paul,240,46,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Scott Walker,225,57,0,0.0,0,0.0,128.0,,512
+GOP,model_card,Ted Cruz,326,58,0,0.0,0,0.0,128.0,,512

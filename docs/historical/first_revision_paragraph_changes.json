@@ -1,0 +1,403 @@
+[
+  {
+    "source_paragraph": 0,
+    "before": "When Automated Sentiment Analysis Reverses Public Discourse Rankings: A Comparative Measurement-Validity Audit Across Two Twitter Contexts",
+    "after": "When Automated Sentiment Analysis Reverses Group Rankings of Negative Message Shares: A Comparative Validity Audit of Two Twitter Archives"
+  },
+  {
+    "source_paragraph": 2,
+    "before": "Featured Application: Researchers and public-discourse analysts can audit whether automated estimates change the direction of comparisons between defined groups of messages, especially when group-specific classification error and duplicate-text weighting are consequential.",
+    "after": "Featured Application: A reproducible audit workflow for comparing group-level negative message shares, diagnosing differential classification errors, and choosing how to use a limited human-label budget."
+  },
+  {
+    "source_paragraph": 4,
+    "before": "Automated sentiment analysis can distort comparisons between groups of social-media messages even when its individual classifications appear useful. We audited human annotations and archived VADER and Twitter RoBERTa predictions for 14,640 airline-related tweets (six airlines) and 4,483 unique debate tweets (ten candidate-mention groups). Outcomes were negative-prevalence error and pairwise ranking reversal. VADER reversed three of 15 airline comparisons; RoBERTa reversed none. Both reversed seven of 45 debate comparisons, including five model-specific reversals across pairs whose human-reference gaps exceeded ten percentage points. Group-specific false-negative and false-positive contributions reconstructed these errors exactly. In 200 repeated airline holdout splits, group-specific shrinkage reduced VADER prevalence error; at 400 labels per group, direct human estimates outperformed VADER corrections, while the best RoBERTa correction slightly outperformed direct human estimates on prevalence error. A post-hoc debate replication with 25–100 calibration labels per group also found lower prevalence errors after correction without consistent improvement in rankings; at 100 labels, human-only estimates outperformed all automated corrections. Duplicate-text weighting, uncertain close pairs, target-label mismatch, and training-data overlap constrained interpretation. We recommend validating text measures for the comparative claims they support and always testing direct human estimates alongside model calibration.",
+    "after": "Automated sentiment analysis may change the direction of comparisons between groups of social-media messages. We audited human labels and archived VADER and Twitter RoBERTa predictions for 14,640 airline tweets and 4,483 unique debate tweets. Outcomes were group negative-share error and strict pairwise ranking reversal. VADER reversed 3/15 airline comparisons; RoBERTa reversed none. Both reversed 7/45 debate comparisons, including three VADER and two RoBERTa reversals among pairs with human-reference gaps of at least ten percentage points. At 400 airline labels per group, group-specific shrunk ACC reduced VADER error, but direct human estimation performed better. RoBERTa group-specific ACC had slightly lower prevalence MAE than human-only estimation (2.61 versus 2.66 percentage points), but more ranking reversals. At 100 debate labels per group, human-only estimation outperformed all tested corrections. Retaining repeated debate texts changed VADER reversals to 16/45; majority-label and cross-group-duplicate sensitivities preserved the primary counts. Shrinkage and comparison-set sensitivities supported evaluating prevalence and ordering separately. These retrospective results describe message-level negativity in selected historical archives; the original RoBERTa inference environment was not recoverable. The practical contribution is an auditable workflow that evaluates the comparisons a sentiment measure supports."
+  },
+  {
+    "source_paragraph": 15,
+    "before": "The contribution is methodological and substantive for computational communication. We provide: (a) an explicit bridge from group-differential classification errors to pairwise comparative reversals; (b) an empirical separation of classification accuracy, prevalence error, and ordering error across two different communication settings; (c) same-budget comparisons of pooled calibration, subgroup-specific calibration, and direct human annotation in the airline corpus and a post-hoc debate extension; and (d) diagnostics for reference near-ties, duplicated text, and training-data overlap. We do not claim to invent prevalence quantification, adjusted classify-and-count, or bootstrap ranking analysis. Instead, we show why their combined application matters when an automated sentiment score underwrites a comparison of communicative objects.",
+    "after": "The contribution is an applied measurement audit: it links differential group errors to reversed comparisons, evaluates prevalence and ordering jointly, and compares model correction with direct human estimation at equal annotation budgets. Reference-gap, duplication, label-conflict, and dependence diagnostics specify when each conclusion is credible. The contribution concerns an operational inferential target and a reusable workflow, rather than a new classifier, prevalence estimator, or bootstrap method."
+  },
+  {
+    "source_paragraph": 23,
+    "before": "For two groups a and b, a strict ranking reversal occurs if (p_a − p_b) × (q_am − q_bm) < 0. The statistic excludes exact predicted ties from the reversal count; ties should be disclosed separately, not silently equated with correct rankings. Our pairwise reversal rate divides the number of strict reversals by the number of eligible, non-tied reference comparisons. Because the same groups appear in multiple pairs, these pair observations are dependent and cannot be treated as independent experimental replications.",
+    "after": "For two groups a and b, a strict ranking reversal occurs when the human-reference and predicted differences have opposite signs. Predicted ties contribute zero strict reversals but are reported separately, with a half-penalty sensitivity where available. The complete-archive denominators are 15 airline pairs and 45 debate pairs; no human-reference pairs are tied. The original airline split routine excludes held-out reference ties from the all-pair denominator. The debate split routine retains all 45 pairs (or the fixed 30-pair large-gap subset), counting reference ties as zero strict reversals. This implementation difference is disclosed rather than silently harmonized; the new held-out-gap analysis excludes reference ties by construction. Pairs sharing groups are dependent."
+  },
+  {
+    "source_paragraph": 25,
+    "before": "Adjusted classify-and-count (ACC) uses estimates of a classifier’s conditional error rates to recover a group prevalence from the observed predicted-negative fraction. Under its operating assumptions, p̃_g = (q_g − estimated FPR_g) / (estimated TPR_g − estimated FPR_g), with practical clipping and regularization. A pooled transformation applied uniformly to all groups is typically monotonic and can improve prevalence accuracy without altering their ordering. A group-specific correction can change relative positions, but estimation of separate rates from small labeled samples introduces variance and instability. The direct human-only baseline—calculating the negative share of a labeled sample from each group—must therefore be compared under the same annotation budget, rather than assumed inferior by default.",
+    "after": "Adjusted classify-and-count (ACC) corrects predicted class proportions using estimated conditional error rates, following established quantification work (Forman, 2008). The correction assumes that calibration rates apply to the evaluated messages. A common pooled ACC map preserves weak ordering when estimated TPR exceeds FPR; clipping can create ties. A negative denominator reverses order before clipping, and group-specific fallback or adjustment can change ordering. Group-specific rate estimates allow heterogeneous errors but are noisy with few labels. Shrinkage blends these estimates with pooled rates to reduce variance at the cost of bias when groups differ. The direct human-only estimate therefore remains an essential equal-budget benchmark. Probability-based ACC (PACC) was not evaluated because archived outputs lack the class probabilities required for it."
+  },
+  {
+    "source_paragraph": 26,
+    "before": "A related issue is that estimates of p_a − p_b may themselves be unstable when the groups are nearly tied. We accordingly distinguish all object pairs from pairs separated by at least three, five, or ten percentage points in the original human-reference data. These are practical sensitivity thresholds rather than theoretically universal cutoffs or equivalence tests. Conditional bootstrap resampling helps identify fragile comparative conclusions but does not convert a selected historical archive into a representative sample of current public opinion.",
+    "after": "Reference ordering may itself be unstable for near-tied groups. We therefore report all pairs and sensitivity subsets with original human-reference gaps of at least three, five, or ten percentage points. These descriptive thresholds are not universal decision cutoffs or equivalence tests. Section 3.9 adds a comparison set defined separately inside each held-out partition."
+  },
+  {
+    "source_paragraph": 28,
+    "before": "The study addresses three questions. RQ1: Do general-purpose sentiment classifiers reverse the human-reference ordering of communication objects, including pairs with sizeable reference differences? RQ2: Can limited human annotations improve both negative-prevalence estimation and object ordering, and how do pooled adjustment, group-specific adjustment, and direct human estimation compare under identical budgets? RQ3: How do duplicates, reference near-ties, target-directed labeling, and model training-data overlap change the credibility of comparative conclusions? These are analytic research questions; the historical reanalyses and calibration sensitivity exercises are not presented as prospectively preregistered confirmatory tests.",
+    "after": "The study addresses three questions. RQ1: Do general-purpose sentiment classifiers reverse the human-reference ordering of communication objects, including pairs with sizeable reference differences? RQ2: Can limited human annotations improve both negative-prevalence estimation and object ordering, and how do pooled adjustment, group-specific adjustment, and direct human estimation compare under identical budgets? Exploratory RQ3: How do duplicates, reference near-ties, target-directed labeling, and model training-data overlap change the credibility of comparative conclusions? These are analytic research questions; the historical reanalyses and calibration sensitivity exercises are not presented as prospectively preregistered confirmatory tests."
+  },
+  {
+    "source_paragraph": 40,
+    "before": "Computational workflow and AI assistance. OpenAI ChatGPT was used to assist with research planning, code development, statistical checking, and manuscript drafting. Analyses reported here use preserved source data, human annotations, and archived model predictions. Downstream numerical outputs, including both 200-repetition annotation-budget analyses, were independently regenerated using the documented scripts and archived predictions. The original historical RoBERTa neural inference was not re-executed in a version-locked runtime.",
+    "after": "Computational workflow and AI assistance. OpenAI ChatGPT assisted research planning, code development, checking, and drafting. The analyses use source records, existing human annotations, and archived predictions. Both 200-split budget protocols were rerun from these inputs and matched the preserved summaries. The additional analyses in Section 3.9 were run during revision. No historical neural inference was re-executed in a version-locked environment."
+  },
+  {
+    "source_paragraph": 35,
+    "before": "For the primary full-sample comparison, we formed all 15 airline pairs. An earlier internal fixed-corpus bootstrap repeated sampling 500 times, conditional on the existing tweets, to describe observed ranking stability. These repetitions are not 500 new samples from the contemporary platform.",
+    "after": "For the primary full-sample comparison, we formed all 15 airline pairs. An earlier internal fixed-corpus bootstrap procedure resampled 500 times to describe observed ranking stability; its records are distinct from the label-budget experiment. A new high-confidence-label sensitivity retained the 10,445 records whose supplied annotation confidence equaled 1.0 (Section 3.9)."
+  },
+  {
+    "source_paragraph": 37,
+    "before": "Study 2 uses 13,871 original CrowdFlower debate-related records and the supplied candidate and whole-tweet sentiment variables (CrowdFlower, n.d.). Records without a usable candidate, an accepted negative/neutral/positive sentiment label, or text were excluded (7,587 records). This left 6,284 valid candidate-associated records. To define an equal-weighted unique-expression primary estimand, Unicode-NFKC/HTML/whitespace-normalized exact text duplicates were removed (1,801 records), leaving 4,483 unique-text messages. All ten retained groups satisfied the analytical eligibility criteria of at least 100 messages and at least ten negative and ten nonnegative human labels. The 45 unordered candidate pairs constituted the comparison set. A second, record-weighted sensitivity analysis retained all 6,284 usable rows, including repeated texts; these versions represent different measurement targets and should not be conflated.",
+    "after": "Study 2 uses 13,871 original CrowdFlower debate-related records and the supplied candidate and whole-tweet sentiment variables (CrowdFlower, n.d.). Exclusions comprised 7,491 records coded “No candidate mentioned” and 96 with missing candidate information; no additional records were excluded for invalid sentiment or empty text after these exclusions. The 6,284 eligible records were normalized by HTML unescaping, Unicode NFKC, case folding, and whitespace collapse. Global exact-normalized-text deduplication retained the first source occurrence, removing 1,801 surplus records and leaving 4,483 texts. All ten groups had at least 100 messages and ten labels of each binary class, giving 45 unordered pairs. The record-weighted sensitivity retained all 6,284 rows."
+  },
+  {
+    "after_source_paragraph": 37,
+    "added": "Of the 150 normalized-text groups with repeated records, 60 had conflicting three-category human labels, and five texts occurred under more than one candidate. The primary first-occurrence rule retains the corresponding source label and candidate. New sensitivities use the modal sentiment label across duplicates (ties retain the first occurring modal label) and, separately, remove all five cross-candidate texts. They reuse the same archived predictions and test reference-label and group-assignment choices, not newly adjudicated ground truth."
+  },
+  {
+    "source_paragraph": 41,
+    "before": "We evaluated VADER, a lexicon-and-rule classifier adapted for social-media language (Hutto & Gilbert, 2014), and cardiffnlp/twitter-roberta-base-sentiment-latest, a Twitter-trained transformer fine-tuned on TweetEval sentiment data (Barbieri et al., 2020; CardiffNLP, n.d.; Loureiro et al., 2022). Both were applied as pretrained or rule-based classifiers, without model fitting on the primary human-reference labels. For VADER, negative predictions were defined by a compound score at or below −0.05. For RoBERTa, the label negative was separated from neutral and positive. Human-negative outcomes were coded as 1, whereas human neutral and positive outcomes were 0. The classification and quantification results analyzed here are archived inference outputs: the present independent verification reaggregated their rows but did not regenerate model predictions in a fresh runtime. The exact historical RoBERTa revision and complete inference-library versions were not preserved in the available records. Accordingly, our independent analysis reproduces downstream statistics from archived model predictions, not the original neural predictions from a fully version-locked runtime.",
+    "after": "We analyzed archived VADER and cardiffnlp/twitter-roberta-base-sentiment-latest predictions (Hutto & Gilbert, 2014; Barbieri et al., 2020; CardiffNLP, n.d.; Loureiro et al., 2022). VADER used vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer with compound ≤ −0.05 defining negativity. The supplied GOP inference notebook specifies transformers.pipeline with truncation=True, max_length=128, and batch_size=24; the archived airline protocol records batch_size=32 without an explicit max_length. RoBERTa labels were negative versus neutral/positive, as were the human outcomes. Neither classifier was fitted on the primary reference labels. The exact historical model revision, tokenizer snapshot, vaderSentiment version, full inference-library environment, and original prediction-generation timestamps were not retained in the available records. Current package versions or a current model revision cannot restore those facts. All model-specific findings therefore refer to archived predictions; a new inference run would be a separately labeled replication. Partial environment records and the current statistical runtime are supplied in Supplementary Code S1."
+  },
+  {
+    "source_paragraph": 44,
+    "before": "The original airline analysis assessed label budgets b ∈ {25, 50, 100, 200, 400} per airline. For each of 200 seeded repeated splits, 20% of records were held out within each airline and the remainder constituted a sampling pool for the calibration labels. Within each split and budget, sampled calibration records were disjoint from held-out evaluation records. The held-out subset was evaluated with four estimators: unadjusted classify-and-count (CC), pooled ACC, airline-specific ACC with shrinkage, and a human-only estimator using the same b calibration labels per airline. In all cases the held-out reference labels were used for evaluation, not to fit the adjustments.",
+    "after": "The airline protocol evaluated budgets of 25, 50, 100, 200, and 400 labels per airline using 200 repeated splits with NumPy default_rng seed 20261015. In each split, ceil(0.20 × group size) records were reserved for evaluation. For each budget, a fresh sample without replacement was drawn from the remaining group records; airline budgets were not nested. Calibration and evaluation records were disjoint within each split. CC, pooled ACC, airline-specific shrunk ACC, and direct human estimation used the same evaluation partition; only calibration labels fitted the adjustments or human-only estimate."
+  },
+  {
+    "source_paragraph": 45,
+    "before": "Conditional true-positive and false-positive rates were computed from the calibration labels with Jeffreys 0.5-cell smoothing. For the subgroup adjustment, conditional rates were shrunk toward pooled estimates with a fixed pseudocount parameter k = 100, before forming the clipped ACC ratio. To avoid unstable division, the procedure reverted to unadjusted CC when |estimated TPR − estimated FPR| < 0.10. Direct human-only estimation used the calibration sample’s empirical negative share. All four methods were applied to identical held-out partitions and compared on the same six-airline prevalence MAE and 15-pair reversal rate. This is a repeated-split method comparison over a single archive: the 200 outcomes are correlated by reused observations and should not be interpreted as 200 independent social-media studies.",
+    "after": "Conditional TPR and FPR used Jeffreys 0.5-cell smoothing. In the airline notebook, a smoothed group rate was blended with its calibration-pooled analogue using the group’s observed class-conditional count and k = 100 (Appendix A2). This is a fixed implementation choice in the supplied notebook, not a theoretically optimal value, a literature-prescribed constant, or a parameter selected by an independently documented prospective tuning exercise. The revision evaluates k = 0, 25, 50, 100, 200, and 400 on paired identical partitions without replacing the original k = 100 results. ACC was clipped to [0, 1] and returned CC when the absolute TPR–FPR contrast was below 0.10. Repeated-split summaries are conditional protocol variation; dependence arises because the same records recur across splits."
+  },
+  {
+    "source_paragraph": 46,
+    "before": "The airline calibration experiment was independently rerun from the verified source data, archived model predictions, and preserved notebook routine. This produced 8,000 repetition-by-budget-by-estimator records (200 repetitions × five budgets × four estimators × two classifiers, each summarizing six airline groups); all 40 aggregate summary combinations matched the research archive. The experiment is a retrospective resampling analysis, not an observed field deployment of calibration. Probability-based adjusted classify-and-count (PACC) was not evaluated because the retained inference archive includes hard labels rather than calibrated per-class probabilities.",
+    "after": "The recovered airline routine generated 8,000 classifier-row summaries (200 splits × five budgets × four estimators × two classifiers); all 40 budget–model–estimator summaries matched the archive. Human-only rows are repeated under both classifier names for computational bookkeeping and describe the same estimates, not additional observations. Supplementary Code S1 now includes the recovered executable split-generation routine. PACC’s exclusion is explained in Section 2.2."
+  },
+  {
+    "source_paragraph": 54,
+    "before": "The four estimators were unadjusted classify-and-count (CC), pooled adjusted classify-and-count (ACC), group-specific shrinkage ACC, and direct human-only prevalence estimation. Only calibration labels were used to estimate misclassification rates or human-only shares. Following the documented airline protocol, conditional true- and false-positive rates used Jeffreys 0.5-cell smoothing; group rates were shrunk toward pooled rates with a fixed pseudocount mass of 100 per conditional denominator. ACC estimates were clipped to [0, 1] and reverted to CC when the absolute difference between estimated true- and false-positive rates was below 0.10. Estimator performance was compared on exactly the same held-out records in a replication. Outcomes were ten-group equal-weight mean absolute prevalence error in percentage points and strict reversal rates among all 45 fixed candidate pairs. A second 30-pair analysis fixed the set of comparisons with original full-archive human-reference differences of at least ten percentage points. The latter is a retrospective descriptive sensitivity, as those original reference labels were observed before this additional analysis. Predicted ties were counted separately, with a half-penalty-for-ties sensitivity. The repeated-split percentile ranges describe the variability of this protocol on one archive, not independent-sample confidence intervals or prospective deployment performance.",
+    "after": "The four estimators were CC, pooled ACC, group-specific shrunk ACC, and human-only estimation. Only calibration labels fitted conditional rates or human-only shares. Both protocols use Jeffreys smoothing, k = 100, clipping, and the 0.10 fallback threshold, but their exact shrinkage formulas differ: the GOP implementation adds k pooled-rate pseudo-observations to the Jeffreys numerator and denominator, whereas the airline notebook blends the smoothed rate using the unsmoothed class count (Appendix A2). These archived implementations were retained for their respective results. Outcomes were equal-weight ten-group MAE and strict reversal rates across the fixed 45 candidate pairs. The fixed 30-pair subset was selected using complete-archive reference gaps ≥10 pp and is explicitly retrospective. Predicted ties were recorded separately and assigned a half penalty in a sensitivity analysis. A held-out-only gap definition is added in Section 3.9."
+  },
+  {
+    "source_paragraph": 55,
+    "before": "An analytical audit reconstructed true positives, false negatives, false positives, and true negatives for each group and model from individual archived predictions. The exact prevalence error identity was verified in both corpora: q_g − p_g = (1 − p_g) × FPR_g − p_g × (1 − TPR_g). For each original pair (a, b), we verified q_a − q_b = (p_a − p_b) + [(q_a − p_a) − (q_b − p_b)]. Both source CSV SHA-256 digests and individual prediction/label alignments were checked. The airline 8,000 and debate 4,800 repeated-split outcomes were independently regenerated from the preserved inputs and matched archived aggregate summaries; these replications do not constitute re-execution of the historical neural model inference. Group-level confusion counts and the error-component decomposition of every strong-gap reversal are provided in Supplementary Tables S3 and S4; these descriptive breakdowns are derived from the same archived predictions and do not represent new independent samples.",
+    "after": "For each group and model, we reconstructed TP, FN, FP, and TN from archived predictions and verified the prevalence-error and pair-difference identities in Section 2.1. Source-file digests and row-label alignment also matched. The 8,000 airline and 4,800 debate classifier-row split summaries were regenerated and reproduced the archived budget summaries. These checks audit downstream statistics rather than historical neural inference. Supplementary Tables S3 and S4 provide group confusion counts and the decomposition of all eight model-by-pair reversals with original reference gaps ≥10 pp."
+  },
+  {
+    "after_source_paragraph": 55,
+    "added": "3.9. Additional retrospective sensitivity analyses"
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "Revision analyses used the same archived inputs. First, airline confidence-1 labels, GOP modal duplicate labels, and removal of cross-candidate duplicates tested reference and grouping sensitivity. Second, both budget protocols were repeated on identical partitions across k = 0, 25, 50, 100, 200, and 400. Third, the GOP ≥10-pp comparison subset was redefined using only each split’s held-out human shares; these labels defined evaluation eligibility and did not fit or tune the estimators. The eligible-pair denominator therefore varies by split and differs from the fixed complete-archive 30-pair estimand."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "Finally, 2,000 paired global bootstrap resamples of recorded account-name clusters (seed 20261016) assigned the same multiplicity to all retained messages from a sampled account across groups. The archive contained 7,701 airline and 3,287 primary GOP account-name clusters, with no missing values. Each resample carried human and both model labels together. This sensitivity addresses observed account clustering, but account-name strings are imperfect identifiers and topic, temporal, or coordinated-message dependence can remain. Percentile ranges describe this conditional archive resampling, not representative population uncertainty. Supplementary Tables S5–S8 report these additions."
+  },
+  {
+    "source_paragraph": 59,
+    "before": "Note. The airline archive is analyzed as distributed. The debate archive excludes unusable group/label/text fields and removes normalized exact-text duplicates for the primary version. Shares are conditional on their archived inclusion rules, not on a population-sampling design.",
+    "after": "Note. Airline records are analyzed as distributed; GOP primary records are globally deduplicated normalized texts after the candidate exclusions in Section 3.3. All shares describe retained archive messages."
+  },
+  {
+    "source_paragraph": 70,
+    "before": "Note. Entries are means across 200 paired repeated splits of the same dataset, with a common 20% per-airline test holdout inside each split. Human-only estimates are computed from calibration records, not the test labels. They are identical across classifier rows because they do not use a classifier. These reversal frequencies are not the same estimand as the full-airline-corpus 3/15 result above.",
+    "after": "Note. Means across 200 paired within-archive splits, with 20% per-airline held-out evaluation (rounded upward). Human-only uses calibration labels and is shown once because it is classifier-independent. Its complete budget results are in Table S1. The all-pair denominator excludes held-out human ties; none occurred in these 200 airline partitions. These holdout reversal rates differ from the full-corpus 3/15 audit."
+  },
+  {
+    "source_paragraph": 73,
+    "before": "Figure 2 summarizes all five budgets; the repeated-split lines are averages within one historical archive.",
+    "after": "Figure 2 compares both classifiers across all five budgets; bands show conditional 2.5th–97.5th split percentiles."
+  },
+  {
+    "source_paragraph": 75,
+    "before": "Figure 2. Four equal-budget estimates of airline-group negative prevalence under VADER.",
+    "after": "Figure 2. Equal-budget prevalence estimation for VADER and archived RoBERTa. Lines are mean six-group MAE across 200 paired splits; bands are conditional 2.5th–97.5th percentiles, not population confidence intervals. Each panel compares CC, pooled ACC, airline-specific shrunk ACC (k = 100), and human-only estimation on identical held-out records."
+  },
+  {
+    "source_paragraph": 76,
+    "before": "4.4. Study 2: Independent debate-context ordering reversals",
+    "after": "4.4. Study 2 debate-context ordering reversals"
+  },
+  {
+    "source_paragraph": 92,
+    "before": "4.7. Decomposition of group-specific misclassification mechanisms",
+    "after": "4.7. Decomposition of group-specific classification error components"
+  },
+  {
+    "source_paragraph": 98,
+    "before": "Note. These are conditional repeated-split means, not values from the complete-debate-corpus direct ranking audit (7/45 inversions per model). Every split reserves approximately 20% of messages within each candidate group for evaluation. The same fixed 30 original human-gap pairs are assessed within each split, although their held-out human order can fluctuate. Human-only estimates are discrete at these budgets and generate more exact ties. At budget 100, average all-pair ties were 0.72 of 45 for human-only versus 0.17 for group-adjusted VADER and 0.02 for group-adjusted RoBERTa; assigning a half error to ties yields a 13.84% human-only all-pair error compared with 27.36% and 20.37% for the two respective group-shrunken ACC estimates. Thus, the overall human-only advantage is not an artifact of automatically treating tied rankings as correct. Across held-out partitions, an average of 4.40 of 45 human-reference pair directions differed from the complete-archive reference, which is a further limit on comparing cross-partition ordering rates.",
+    "after": "Note. Means across 200 within-archive splits at 100 calibration labels per group. Evaluation uses the same approximately 20% holdout per candidate for every estimator. All 45 fixed pairs, or the fixed 30 original ≥10-pp pairs, remain in each denominator; held-out human ties yield zero strict reversals and average 0.11 of 45 pairs per split. Predicted ties contribute zero strict reversals. At budget 100, human-only yields 0.72 predicted ties per split, versus 0.17 for group-adjusted VADER and 0.02 for group-adjusted RoBERTa; half-penalty rates are 13.84%, 27.36%, and 20.37%, respectively. Human-only is shown once; budgets 25, 50, and 100 are in Table S2. Held-out human directions disagree with the complete-archive order for 4.40 pairs on average, so this table is not the complete-archive 7/45 result."
+  },
+  {
+    "source_paragraph": 99,
+    "before": "In paired differences at budget 100, subgroup-shrunken ACC improved VADER MAE by an average 8.11 points relative to CC and improved RoBERTa by 4.14 points. Nevertheless, compared with the direct human-only estimator, group-shrunken ACC had higher MAE by 10.69 points for VADER and 5.74 for RoBERTa. The 2.5th–97.5th percentiles of paired repeated-split differences are not population confidence intervals. Results at budgets of 25 and 50, all per-split metrics, and the exact protocol are supplied in the reproducibility supplement. This comparison supports a conditional practical recommendation: when a genuinely random, adequate sample of human-coded messages can be obtained from each studied group, direct human prevalence estimation is a strong and in these historical examples superior baseline; model-based adjustment should not be presented as necessarily more efficient or more accurate.",
+    "after": "In paired differences at budget 100, subgroup-shrunken ACC improved VADER MAE by an average 8.11 points relative to CC and improved RoBERTa by 4.14 points. Nevertheless, compared with the direct human-only estimator, group-shrunken ACC had higher MAE by 10.69 points for VADER and 5.74 for RoBERTa. The 2.5th–97.5th percentiles of paired repeated-split differences are not population confidence intervals. Results at budgets of 25 and 50, all per-split metrics, and the exact protocol are supplied in Supplementary Code S1. This comparison supports a conditional practical recommendation: when a genuinely random, adequate sample of human-coded messages can be obtained from each studied group, direct human prevalence estimation is a strong baseline that outperformed all tested GOP corrections at 100 labels per group; model-based adjustment should not be presented as necessarily more efficient or more accurate."
+  },
+  {
+    "after_source_paragraph": 99,
+    "added": "4.9. Additional reference and protocol sensitivities"
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "The airline confidence-1 subset retained 10,445 records and reproduced VADER’s 3/15 and RoBERTa’s 0/15 reversals. GOP modal duplicate labels changed 15 binary reference labels but preserved 7/45 reversals for both models. Removing all five cross-candidate texts left 4,478 records and likewise preserved 7/45 for each model. These checks support stability under the tested rules; they do not establish that source labels are error-free (Table S5)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "Shrinkage strength affected performance and did not have a uniformly optimal setting. At 400 airline labels, VADER group-ACC MAE ranged from 6.47 to 10.79 pp and reversal rates from 10.47% to 25.33% across the six k values, versus human-only MAE 2.66 pp and reversals 3.20%. At 100 GOP labels, corresponding group-ACC MAEs ranged from 16.93 to 20.74 pp for VADER and 11.96 to 13.47 pp for RoBERTa; human-only MAE was 6.42 pp. The original k = 100 results are one fixed specification, not an optimized recommendation (Table S6)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "With GOP ≥10-pp pairs defined inside each holdout, the mean eligible-pair count was 31.22. At 100 labels, CC, pooled ACC, group ACC, and human-only reversal rates were 18.17%, 18.06%, 19.48%, and 4.55% for VADER; for RoBERTa they were 12.11%, 12.06%, 11.36%, and 4.55%. This alternative evaluation set preserved the conditional human-only advantage, while its values are not directly interchangeable with the fixed 30-pair rates (Table S7)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "Under account-cluster resampling, mean strict reversal rates were 26.02% for VADER and 3.33% for RoBERTa in the airline archive, and 21.90% and 19.11% in GOP. Conditional 95% percentile ranges were 20.00–40.00%, 0.00–13.33%, 11.11–33.33%, and 11.11–28.89%, respectively. Reference order is recomputed within each resample, explaining why these means differ from complete-archive counts. The GOP overlap in ranges does not establish equal model performance (Table S8)."
+  },
+  {
+    "source_paragraph": 102,
+    "before": "The central empirical result is not merely that sentiment classifiers have errors—an established finding—but that object-comparison conclusions can change in ways not summarized by document-level accuracy or total prevalence error. In the airline sample, VADER’s particularly strong undercount for United shifted it below three airlines that the human reference ranked as less negative. In the debate sample, both classifiers reversed some pairs with reference differences of at least ten points, even though RoBERTa was substantially better on message-level accuracy and group MAE. Each comparison describes a selected collection of public messages, not a population judgment of the organizations or named political figures.",
+    "after": "The central empirical result is not merely that sentiment classifiers have errors—an established finding—but that object-comparison conclusions can change in ways not summarized by document-level accuracy or total prevalence error. In the airline sample, VADER’s particularly strong undercount for United shifted it below three airlines that the human reference ranked as less negative. In the debate sample, both classifiers reversed some pairs with reference differences of at least ten points, even though RoBERTa was substantially better on message-level accuracy and group MAE. Such reversals can change which object an analyst prioritizes for manual review or issue monitoring; the present study does not measure the consequences of any deployed decision."
+  },
+  {
+    "source_paragraph": 105,
+    "before": "The algebraic decomposition shows that when a group has human-reference negative proportion p_g, its error can be written as q_g - p_g = (1 - p_g) × FPR_g - p_g × FNR_g. False-negative errors subtract p_g × FNR_g from the observed prevalence, while false-positive errors add (1 - p_g) × FPR_g. An overall classifier evaluation can mask differences in these components between communication objects. The especially large negative bias for United illustrates how such heterogeneity can dominate the ranking comparison.",
+    "after": "The algebraic decomposition in Section 2.1 separates false-positive additions from false-negative omissions in each group’s prevalence estimate. Overall classifier accuracy can conceal substantial group differences in these contributions. United’s large negative bias shows how uneven errors can dominate an object comparison. This is an accounting decomposition of classification errors, not a causal explanation of their linguistic or psychological origins."
+  },
+  {
+    "source_paragraph": 109,
+    "before": "The study’s proposed workflow is to begin with the substantive estimand, not with the classifier. First, define whether the desired outcome is the sentiment of whole messages, sentiment directed at a named entity, or a public’s attitude. Second, identify each communication object’s denominator—posts, distinct textual expressions, authors, or exposure-weighted impressions—and do not treat these as interchangeable. Third, validate the chosen automated measure within all substantively important groups rather than only on the pooled corpus. Fourth, measure group prevalence error and comparative ranking error alongside individual-level accuracy. Fifth, separately audit near-tied comparisons and apparent large-gap reversals. Finally, when human annotations are feasible, compare correction strategies with a direct human-only baseline under the same label budget.",
+    "after": "A reusable audit begins by defining the sentiment construct, group denominator, and comparisons relevant to a decision. Group-stratified human validation is needed before trusting a model ordering where group errors are unknown. Analysts should report item accuracy, group prevalence MAE, strict reversals, ties, and reference-gap sensitivity on common evaluation data. Under a limited label budget, compare pooled correction, group correction, and human-only estimation on paired held-out records; tune shrinkage within calibration data if tuning is intended. If ordering is unstable under reference resampling or correction, report that comparison as unresolved for the intended decision. Our ten-point sensitivity threshold is descriptive and is not a universal abstention rule. Supplementary Code S1 implements these checks and records their inputs and outputs."
+  },
+  {
+    "source_paragraph": 110,
+    "before": "The added candidate-budget comparison further shows that reducing prevalence MAE through correction does not guarantee fewer ranking inversions; at the same budget, human-only estimation may be preferable. The two-corpus design strengthens the distinction between an algorithm benchmark and a communication measurement decision, but it does not make the corpora population-representative. The observation that both main settings contain large-gap reversals is evidence that the failure mode is not confined to one airline-specific label distribution; it is not evidence of an invariant prevalence or frequency of ranking reversals across social platforms. A future prospective study would explicitly sample a defined platform population, preserve post- and author-level dependence, and preregister which comparisons are decision-relevant. It could then test whether group-specific calibration continues to add value when the reference distribution and communication context shift over time.",
+    "after": "The candidate-budget extension shows that correction can reduce prevalence MAE without reliably restoring ordering. It demonstrates this failure mode in a second topic and grouping context, while optimal label budgets and estimators remain context dependent. A prospective application should define its content population and decision-relevant comparisons before annotation, preserve dependence information, and evaluate the chosen procedure on a later or separately sampled corpus."
+  },
+  {
+    "source_paragraph": 114,
+    "before": "The added audit should be understood relative to established correction and validation methods, not as the invention of an error-correction estimator. TeBlunthuis et al. (2024) examine how misclassification distorts regression estimates, whereas our downstream target is the sign of descriptive differences between communication-object prevalence values. The validation review by Birkenmaier et al. (2024) and the bias agenda discussed by Hase et al. (2025) support explicit estimand-specific checks. The large change in GOP VADER rankings when duplicate records are retained is consistent with the data-quality concerns studied by Mu et al. (2024), but does not establish that one denominator is universally correct. We regard direct limited-label human estimates as a substantive baseline rather than a mere auxiliary diagnostic.",
+    "after": "Our incremental contribution is to make the sign of a group-prevalence difference an explicit applied validation target. Misclassification-correction studies such as TeBlunthuis et al. (2024) address downstream regression bias; here the target is descriptive comparison. Jointly reporting error components, denominator choices, reference-gap sensitivity, and equal-budget alternatives turns that target into an auditable workflow. It complements established validation and data-quality work (Birkenmaier et al., 2024; Hase et al., 2025; Mu et al., 2024)."
+  },
+  {
+    "source_paragraph": 115,
+    "before": "This study is positioned alongside, not against, prior work on supervised quantification. Earlier papers demonstrate why prevalence estimation should not be reduced to ordinary classification and why adjusted or distribution-aware procedures can improve it (Gao & Sebastiani, 2016; Moreo & Sebastiani, 2022). Our incremental contribution is to articulate and audit the downstream interpretive target: a comparative conclusion about the ordering of communication objects. The joint assessment of group-differential error, reference-gap sensitivity, annotation-budget correction, and direct-human estimation illustrates a transparent way to assess that target in applied computational communication research. We neither introduce a new model architecture nor claim that ACC is universally the best quantification approach.",
+    "after": "Established quantification research already explains why classification and prevalence objectives differ (Forman, 2008; Gao & Sebastiani, 2016; Moreo & Sebastiani, 2022). The present audit connects that distinction to a concrete communication inference and supplies executable split-generation, aggregate checks, and sensitivity procedures. These additions improve reuse without establishing a universally best estimator or a new quantification algorithm."
+  },
+  {
+    "source_paragraph": 117,
+    "before": "Several limitations prevent broader claims. First, both main corpora are historical convenience archives with their own collection and annotation procedures; neither is a randomized or probability sample of social-media activity. Second, the grouping variable for the debate corpus is a mentioned candidate. General message negativity may reflect an event, an opponent, or broader political discussion rather than evaluation of the named candidate. Third, a user may contribute multiple posts, and some dependence may remain after removing exact duplicate texts. Fourth, the archived reference categories are themselves imperfect human judgments rather than error-free access to a latent construct. Fifth, decisions such as class thresholding, normalization, group inclusion, and original corpus selection affect the results, and the analyses are not prospectively preregistered.",
+    "after": "The principal limits are design and construct scope. Both main datasets are selected 2015 Twitter archives; group rankings need not transport to contemporary platforms, languages, or content distributions. GOP grouping records candidate mention rather than the target of negativity. Reference labels remain fallible: 60 repeated-text groups contain label conflicts, and five texts span candidate groups. Modal-label and cross-group-removal checks preserve the primary counts but cannot adjudicate annotation validity. Account-name clustering addresses one observed dependence source; incomplete identifiers, similar wording, topics, and temporal or coordinated activity can still affect uncertainty. Thresholding, normalization, inclusion criteria, and unregistered retrospective choices also delimit the findings."
+  },
+  {
+    "source_paragraph": 118,
+    "before": "Sixth, the original data digests and row-level joins to archived predictions were verified and both 200-repetition annotation-budget procedures were independently rerun from preserved inputs. These checks establish the downstream statistical reproducibility of the archived-prediction analyses; they do not establish the reproducibility of the original RoBERTa model inference. The exact historical checkpoint revision and full inference-library environment were not recoverable. Seventh, both annotation-budget analyses use overlapping repeated splits of the same underlying archives, so split-level quantiles summarize internal protocol variation rather than independent-study replication. Eighth, the post-hoc transfer of calibration to debate texts did not consistently improve pairwise ranking and favored direct human-only estimation on prevalence MAE; optimal calibration budgets cannot be presumed to generalize. Ninth, our strict reversal counts do not fully represent exact predicted ties or the substantive cost of an incorrect comparison. Finally, exact train/validation text matches are only a partial test of model exposure; pretrained models may have encountered material through other channels.",
+    "after": "The reproducibility boundary is equally specific. Original input hashes and row alignment match, and both budget protocols reproduce the archived summaries, but exact historical model and library versions remain unavailable. This supports statistical reproduction from stored predictions, not restoration of original neural inference. Split and bootstrap repetitions reuse archive records; their percentile ranges are conditional, and pairwise comparisons are dependent. The two archived shrinkage implementations differ slightly and k = 100 is not optimal across all tasks; the new grid is a sensitivity analysis, not out-of-sample model selection. Fixed complete-archive and held-out-only gap definitions target different pair sets. Finally, exact supervised-data matching does not exclude approximate or pretraining exposure, and neither strict inversions nor half-penalty ties quantify the decision cost of an incorrect comparison."
+  },
+  {
+    "source_paragraph": 120,
+    "before": "Comparative descriptions of social-media communication can be altered by errors in automatically assigned sentiment labels, even when the underlying messages have been annotated by humans and the observed group differences are substantial. Across two historical Twitter archives with whole-message polarity labels, we found strict ordering reversals under automated classifiers. These included comparisons whose original human-reference negative shares differed by at least ten percentage points. Such errors are not fully characterized by a model’s message-level accuracy or by the absolute size of its group-prevalence bias.",
+    "after": "Automated sentiment errors can reverse group rankings of negative message shares in historical social-media archives, including comparisons separated by substantial human-reference gaps. The two-corpus audit demonstrates why item classification accuracy, prevalence error, and ordering error should be evaluated separately. Group error-component decomposition identifies how false-positive and false-negative counts contribute to these reversals."
+  },
+  {
+    "source_paragraph": 121,
+    "before": "The exact error decomposition shows how between-group differences in negative-class omission and false-positive labeling translate into observed ordering reversals. Moreover, a post-hoc debate-label budget comparison found that correction reduced prevalence error but did not consistently improve ranking, whereas direct human-only estimates were markedly more accurate. The relevant unit of validation is therefore the inferential claim a communication researcher intends to make. Researchers comparing organizations, politicians mentioned in discussions, or other communication objects should publish the reference and predicted negative shares, the direction of substantive group comparisons, and sensitivity results for both near ties and clearly separated reference pairs. In this study, group-specific error correction sometimes improved these comparisons, but at the highest tested airline annotation budget, directly estimating shares from the human-labeled calibration subsample remained a strong and often superior alternative.",
+    "after": "Under equal label budgets, direct human estimation is an essential comparator. At 400 airline labels per group, RoBERTa group ACC slightly improved prevalence MAE over human-only estimation but produced more reversals; human-only estimation outperformed VADER corrections on both outcomes. At 100 GOP labels, human-only estimation outperformed all tested corrections. These conditional results support evaluating each proposed correction against the actual comparative decision, rather than assuming calibration is preferable."
+  },
+  {
+    "source_paragraph": 122,
+    "before": "The results must be interpreted within historical convenience archives. Overall message polarity cannot be equated with emotion directed toward a named candidate or product, and repeated texts should not be interpreted as audience exposure. The experiments were not prospectively preregistered, their resampled partitions reuse the same archives, and the original raw-file hashes and prediction alignments have been verified, but the exact historical RoBERTa revision was not recoverable from the records available for this audit; this limitation is documented in the repository.",
+    "after": "The evidence concerns whole-message negativity and archived predictions, with incomplete historical neural-inference provenance. Future research should prospectively repeat the audit on defined content samples from other platforms and track how comparative validity changes across time and version-locked model updates. Preserving constructs, denominators, and decision-relevant pairs across those evaluations would test transport and validity drift directly."
+  },
+  {
+    "source_paragraph": 125,
+    "before": "Supplementary Materials: Supplementary Tables S1 and S2 report the complete annotation-budget summaries across the two historical corpora. Supplementary Table S3 reports group-level negative-class confusion counts and error components for every communication-object group and classifier. Supplementary Table S4 reports exact false-positive and false-negative bias contributions for all strict ranking reversals among pairs separated by at least 10 percentage points in the original human reference. No raw tweet text, user metadata, row-level text hashes, or individual model predictions are distributed in these tables.",
+    "after": "Supplementary Materials: Supplementary Tables S1–S8 and Supplementary Code S1 accompany this revision. Tables S1–S2 report complete budget summaries; S3 group confusion counts; S4 all eight large-gap error decompositions; S5 reference and duplicate sensitivities; S6 the shrinkage grid; S7 held-out versus fixed gap sets and ties; and S8 account-cluster bootstrap summaries. Code S1 contains scripts, aggregate inputs and outputs, regenerated figures, and run instructions. No raw tweet text, account identifiers, row-level text hashes, or individual predictions are distributed in this package."
+  },
+  {
+    "source_paragraph": 126,
+    "before": "Institutional Review Board Statement: This study is a retrospective secondary analysis of two previously distributed historical social-media datasets containing existing human sentiment annotations and archived model predictions. No individuals were recruited or contacted, and no intervention or new participant data collection was conducted. The source datasets may contain account-associated fields and tweet text; therefore, the source records are not described as fully anonymized. Only aggregated findings are reported. [The applicability of institutional ethics review and any exemption or non-applicability determination under the relevant institutional procedures and the Measures for Ethical Review of Science and Technology (Trial) (Guo Ke Fa Jian [2023] No. 167) remain to be confirmed before submission. No institutional approval, exemption or waiver is claimed at this stage.]",
+    "after": "Institutional Review Board Statement: This retrospective secondary analysis used previously distributed historical social-media posts, existing human annotations, and archived predictions. No individuals were recruited or contacted and no intervention was conducted. Source files contain tweet text and account-associated fields and are not described as fully anonymized; reported outputs are aggregate. The applicable institutional review, exemption, or non-applicability determination has not yet been documented. No institutional approval, exemption, or waiver is claimed."
+  },
+  {
+    "source_paragraph": 127,
+    "before": "Informed Consent Statement: No new participants were recruited or contacted, and no new informed consent was obtained in this retrospective secondary analysis. The study used pre-existing historical posts and third-party human annotations. [The journal-appropriate statement on consent exemption or non-applicability must be finalized in accordance with the institutional ethics applicability determination; no formal consent waiver is claimed at this stage.]",
+    "after": "Informed Consent Statement: No new consent was obtained because no new participants were contacted. This analysis used pre-existing posts and third-party labels. Whether consent is waived or non-applicable has not yet been documented through the applicable institutional procedure; no formal waiver is claimed."
+  },
+  {
+    "source_paragraph": 128,
+    "before": "Data Availability Statement: The two main analyses use third-party, previously distributed historical social-media datasets: Twitter US Airline Sentiment (Figure Eight/CrowdFlower; https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment) and First GOP Debate Twitter Sentiment (CrowdFlower; an archived course-hosted copy at https://ptrckprry.com/course/ssd/data/GOP_REL_ONLY.csv). Dataset provenance and SHA-256 checksums are reported in Appendix A. Original tweet text, account metadata, text-level hashes, and row-level model predictions are not included in the publicly distributable supplementary materials because redistribution permissions and platform-related restrictions have not been fully established. Group-level findings are reported in the article and Supplementary Tables S1–S4, including the 32 group-by-model confusion summaries and eight large-gap error decompositions. The precise terms of any confidential access to restricted records for editorial verification remain subject to applicable source permissions and the author's confirmation.",
+    "after": "Data Availability Statement: Third-party sources are Twitter US Airline Sentiment (Figure Eight/CrowdFlower; https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment) and First GOP Debate Twitter Sentiment (CrowdFlower; course-hosted copy at https://ptrckprry.com/course/ssd/data/GOP_REL_ONLY.csv). Appendix A gives source-file digests. Aggregate findings and split summaries are supplied in Tables S1–S8 and Code S1. Raw tweet text, account metadata, row-level text hashes, and individual predictions are excluded from this distributable package because redistribution rights have not been established. The scripts recompute row-based analyses when lawful local inputs are supplied. The supplied aggregates permit verification of reported summaries but cannot reconstruct individual-level labels or independently regenerate source predictions. Any restricted-data access for editorial verification requires source permission and an agreed access procedure."
+  },
+  {
+    "source_paragraph": 129,
+    "before": "Code Availability: The analysis code, integrity tests, archived group-aggregate outputs and reviewer-safe validation scripts are maintained in an author-controlled private GitHub repository (https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity). A dedicated private review branch (review/reviewer-safe-audit-20261016) contains aggregate-only auditing tables and automated verification checks. Neither that branch nor the repository is publicly accessible, and no release DOI has been assigned. A possible MIT code license is only proposed for eligible original code and has not been activated. Original Twitter text, user metadata, row-level text hashes and preserved individual predictions are not authorized for public redistribution. The archived predictions permit downstream statistical re-aggregation, but the precise historical RoBERTa checkpoint revision and complete inference environment were not preserved.",
+    "after": "Code Availability: Supplementary Code S1 supplies the statistical scripts, recovered airline split-generation routine, aggregate audit inputs and outputs, and revision sensitivities. The package reproduces aggregate checks without raw records; full split-generation additionally requires the four source/prediction inputs named in its README. It does not regenerate historical neural inference. The author-controlled development repository is private (https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity); neither public access nor a release DOI is claimed. A public code license and long-term release have not been finalized. The provided review package establishes a concrete review route, while the publication access and licensing arrangement remains to be finalized."
+  },
+  {
+    "source_paragraph": 132,
+    "before": "Author Contributions: Beiyi Xiao (sole author): Conceptualization; Methodology; Data Curation; Formal Analysis; Validation; Visualization; Writing—Original Draft; Writing—Review & Editing. The author has reviewed and approved the manuscript and takes responsibility for the integrity and accuracy of the reported work. The use of generative-AI assistance is disclosed below.",
+    "after": "Author Contributions: Beiyi Xiao (sole author): Conceptualization; Methodology; Data Curation; Formal Analysis; Validation; Visualization; Writing—Original Draft; Writing—Review & Editing. The author takes responsibility for the integrity and accuracy of the work and for reviewing and approving the revised manuscript. Generative-AI assistance is disclosed below."
+  },
+  {
+    "source_paragraph": 133,
+    "before": "Acknowledgments and Generative AI Use: During the preparation of this study and manuscript, OpenAI ChatGPT was used to assist with research planning, analysis-script generation and development, data-processing workflows, statistical verification, literature discovery, manuscript drafting, and language editing. Both historical source CSVs were hash-matched to archived inputs, and the archived-prediction analyses were independently audited, including reruns of the two repeated-split label-budget protocols. AI-generated responses were not treated as independent empirical observations. Exact ChatGPT model-version identifiers were not retained for every session. The author is responsible for verifying, editing, and approving the final content, code, results, and declarations.",
+    "after": "Acknowledgments and Generative AI Use: OpenAI ChatGPT assisted research planning, script development, data processing, statistical checking, literature discovery, drafting, and editing. Both source-file digests and row-level reference/prediction alignments were checked; airline and GOP budget summaries were regenerated from stored predictions. Revision sensitivities were executed as described in Section 3.9. These are AI-assisted computational checks, not new human observations or external-laboratory validation. Exact ChatGPT model identifiers were not retained for every session. The author is responsible for reviewing and approving the revised text, scripts, results, sources, and declarations."
+  },
+  {
+    "source_paragraph": 154,
+    "before": "A1. Provenance and independent analysis. Both historical source CSVs were matched to previously documented SHA-256 checksums. The complete airline corpus (14,640 records) and the primary deduplicated debate corpus (4,483 records) were aligned with saved model predictions and original reference labels. Archived-prediction comparisons and both label-budget procedures were independently rerun; the 8,000 airline and 4,800 debate split outcomes matched the preserved aggregate summaries. The replications audit downstream analysis and do not represent new data collection, classifier training, or re-execution of the historical neural-inference environment. Exact source-file checksums were SHA-256 ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e for airline Tweets.csv (14,640 rows) and SHA-256 413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86 for GOP_REL_ONLY.csv (13,871 rows).",
+    "after": "A1. Source integrity and statistical reruns. Both original CSV digests match the preserved provenance records. All 14,640 airline records and 4,483 primary GOP texts aligned with their archived prediction/reference rows. Rerunning the two budget protocols recovered all 40 airline and 24 GOP aggregate combinations exactly to the stored numerical precision. Classifier-row counts are 8,000 and 4,800; repeated human-only rows do not add observations. These checks do not authenticate every original annotator judgment or restore historical neural inference. Full source digests are:"
+  },
+  {
+    "after_source_paragraph": 154,
+    "added": "Tweets.csv SHA-256: ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e"
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "GOP_REL_ONLY.csv SHA-256: 413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86"
+  },
+  {
+    "source_paragraph": 155,
+    "before": "A2. Calibration formula. In the documented subgroup-correction routine, the Jeffreys-smoothed estimates are TPR = (TP + 0.5)/(TP + FN + 1) and FPR = (FP + 0.5)/(FP + TN + 1). Each group-specific conditional rate r_g was shrunk toward its pooled analogue r_pool using r_shrunk = (class-conditional success count + 0.5 + 100 × r_pool)/(class-conditional total + 1 + 100). The adjusted prevalence is clip[(q - FPR)/(TPR - FPR), 0, 1]; when |TPR - FPR| < 0.10, the implementation returned the unadjusted classify-and-count proportion. The procedure is a regularized variant of adjusted classify-and-count, not a new calibration algorithm.",
+    "after": "A2. Exact calibration implementations. For either conditional rate, let c denote successes (TP for TPR, FP for FPR), n the corresponding calibration count (TP + FN or FP + TN), and rJ the Jeffreys-smoothed estimate. The pooled analogue rP is computed from sums of calibration confusion counts across all groups, with smoothing applied after pooling; equally sized group calibration samples are concatenated, rather than averaging group rates. The retained formulas are given below. The airline routine uses n-weighted rJ, whereas GOP adds the Jeffreys cell directly to the augmented count. At k = 0 and n = 0, the sensitivity uses the Jeffreys value 0.5. After rate estimation, ACC clips to [0, 1] and returns CC if the absolute estimated TPR–FPR contrast is below 0.10. The implementations are regularized ACC variants, not new estimators."
+  },
+  {
+    "source_paragraph": 157,
+    "before": "A4. Sensitivity scopes. Debate analyses include exact normalized-text deduplication versus retention, stricter group size criteria, fixed pair gaps of 3/5/10 points, and supervised train/validation text match removal. Brand analyses use a different reference construct (target-directed sentiment). SemEval analyses are not accepted as independent generalization evidence for TweetEval-fine-tuned RoBERTa because of extensive normalized-text overlaps.",
+    "after": "A4. Sensitivity scopes. GOP diagnostics compare global first-occurrence deduplication, modal duplicate labels, cross-candidate-text removal, record weighting, group eligibility, fixed 3/5/10-pp gaps, held-out-only 10-pp gaps, and supervised overlap removal. Revision analyses additionally test airline label confidence, six shrinkage strengths, and global account-cluster resampling. Target-directed supplementary tasks remain construct and leakage diagnostics rather than equivalent whole-message replications."
+  },
+  {
+    "source_paragraph": 158,
+    "before": "A5. Reproducibility boundary. Original-file SHA-256 values, row-level human-label alignment, model-prediction joins, algebraic error decompositions, and archived-result replications were audited. The analysis repository includes code and aggregate outputs, but does not currently publicly redistribute raw tweet content or individual-level predictions. The exact historical RoBERTa checkpoint revision and full inference environment were not preserved; a fresh inference run with current downloaded weights would be a separately labeled replication rather than restoration of the historical model run. The analyses are retrospective and were not prospectively preregistered.",
+    "after": "A5. Reproducibility boundary. Code S1 includes aggregate audit tables, both budget-generation routines, sensitivity scripts, and statistical runtime versions. It excludes source posts and individual predictions. Historical RoBERTa revision, tokenizer snapshot, full inference versions, and exact generation timestamps remain unavailable; a new model download would be a new replication. Revision k-grid estimates reproduce every original k = 100 budget summary before extending the analysis. All analyses are retrospective and were not prospectively preregistered."
+  },
+  {
+    "source_paragraph": 66,
+    "before": "Figure 1. Airline-by-airline negative-prevalence reference and model estimates.",
+    "after": "Figure 1. Human-reference and archived model negative shares in six airline message groups. Exact percentages are computed within each group; airlines are ordered by the human reference. United’s VADER bias is −50.18 pp and changes its rank from third to sixth. These values describe archive messages, not traveler attitudes or the current market."
+  },
+  {
+    "source_paragraph": 83,
+    "before": "Figure 3. Strict ranking reversal rate under human-reference gap thresholds in Study 2.",
+    "after": "Figure 3. Strict GOP reversals under fixed original reference-gap subsets. Labels give reversal numerators and comparison denominators; the vertical axis gives percentages. Pair sets contain 45, 43, 39, and 30 comparisons and share candidate groups; they are not independent observations. Groups describe candidate-mention messages, not candidate-directed sentiment or voter approval."
+  },
+  {
+    "source_paragraph": 157,
+    "deleted_redundant_content": "A4. Sensitivity scopes. GOP diagnostics compare global first-occurrence deduplication, modal duplicate labels, cross-candidate-text removal, record weighting, group eligibility, fixed 3/5/10-pp gaps, held-out-only 10-pp gaps, and supervised overlap removal. Revision analyses additionally test airline label confidence, six shrinkage strengths, and global account-cluster resampling. Target-directed supplementary tasks remain construct and leakage diagnostics rather than equivalent whole-message replications."
+  },
+  {
+    "source_paragraph": 158,
+    "deleted_redundant_content": "A5. Reproducibility boundary. Code S1 includes aggregate audit tables, both budget-generation routines, sensitivity scripts, and statistical runtime versions. It excludes source posts and individual predictions. Historical RoBERTa revision, tokenizer snapshot, full inference versions, and exact generation timestamps remain unavailable; a new model download would be a new replication. Revision k-grid estimates reproduce every original k = 100 budget summary before extending the analysis. All analyses are retrospective and were not prospectively preregistered."
+  },
+  {
+    "after_source_paragraph": 134,
+    "added": "1. Grimmer, J.; Stewart, B.M. Text as data: The promise and pitfalls of automatic content analysis methods for political texts. Political Analysis 2013, 21, 267–297. https://doi.org/10.1093/pan/mps028."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "2. Gao, W.; Sebastiani, F. From classification to quantification in tweet sentiment analysis. Social Network Analysis and Mining 2016, 6, 19. https://doi.org/10.1007/s13278-016-0327-z."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "3. Moreo, A.; Sebastiani, F. Tweet sentiment quantification: An experimental re-evaluation. PLOS ONE 2022, 17, e0263449. https://doi.org/10.1371/journal.pone.0263449."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "4. Van Atteveldt, W.; van der Velden, M.A.C.G.; Boukes, M. The validity of sentiment analysis: Comparing manual annotation, crowd-coding, dictionary approaches, and machine learning algorithms. Communication Methods and Measures 2021, 15, 121–140. https://doi.org/10.1080/19312458.2020.1869198."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "5. Jacobs, A.Z.; Wallach, H. Measurement and fairness. In Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency, Virtual Event, Canada, 3–10 March 2021; pp. 375–385. https://doi.org/10.1145/3442188.3445901."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "6. Birkenmaier, L.; Lechner, C.M.; Wagner, C. The search for solid ground in text as data: A systematic review of validation practices and practical recommendations for validation. Communication Methods and Measures 2024, 18, 249–277. https://doi.org/10.1080/19312458.2023.2285765."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "7. TeBlunthuis, N.; Hase, V.; Chan, C.-H. Misclassification in automated content analysis causes bias in regression. Can we fix it? Yes we can! Communication Methods and Measures 2024, 18, 278–299. https://doi.org/10.1080/19312458.2023.2293713."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "8. Hase, V.; Bachl, M.; TeBlunthuis, N. Critical, but constructive: Defining, detecting, and addressing bias in computational social science. Communication Methods and Measures 2025, 19, 281–293. https://doi.org/10.1080/19312458.2025.2575468."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "9. Mu, Y.; Jin, M.; Song, X.; Aletras, N. Enhancing data quality through simple de-duplication: Navigating responsible computational social science research. In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, Miami, FL, USA, 12–16 November 2024; pp. 12477–12492. https://doi.org/10.18653/v1/2024.emnlp-main.694."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "10. Nelson, L.K. Computational grounded theory: A methodological framework. Sociological Methods & Research 2020, 49, 3–42. https://doi.org/10.1177/0049124117729703."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "11. Forman, G. Quantifying counts and costs via classification. Data Mining and Knowledge Discovery 2008, 17, 164–206. https://doi.org/10.1007/s10618-008-0097-y."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "12. Figure Eight/CrowdFlower. Twitter US Airline Sentiment. Available online: https://www.kaggle.com/datasets/crowdflower/twitter-airline-sentiment (provenance link; source-file identity verified 16 October 2026)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "13. CrowdFlower. First GOP Debate Twitter Sentiment. Historical dataset, course-hosted copy. Available online: https://ptrckprry.com/course/ssd/data/GOP_REL_ONLY.csv (provenance link; source-file identity verified 16 October 2026)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "14. Hutto, C.J.; Gilbert, E. VADER: A parsimonious rule-based model for sentiment analysis of social media text. Proceedings of the International AAAI Conference on Web and Social Media 2014, 8, 216–225. https://doi.org/10.1609/icwsm.v8i1.14550."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "15. Barbieri, F.; Camacho-Collados, J.; Espinosa Anke, L.; Neves, L. TweetEval: Unified benchmark and comparative evaluation for tweet classification. In Findings of the Association for Computational Linguistics: EMNLP 2020, Online, 16–20 November 2020; pp. 1644–1650. https://doi.org/10.18653/v1/2020.findings-emnlp.148."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "16. CardiffNLP. twitter-roberta-base-sentiment-latest. Model card. Available online: https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest (accessed on 16 October 2026)."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "17. Loureiro, D.; Barbieri, F.; Neves, L.; Espinosa Anke, L.; Camacho-Collados, J. TimeLMs: Diachronic language models from Twitter. In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics: System Demonstrations, Dublin, Ireland, 22–27 May 2022; pp. 251–260. https://doi.org/10.18653/v1/2022.acl-demo.25."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "18. Rosenthal, S.; Farra, N.; Nakov, P. SemEval-2017 Task 4: Sentiment analysis in Twitter. In Proceedings of the 11th International Workshop on Semantic Evaluation, Vancouver, Canada, 3–4 August 2017; pp. 502–518. https://doi.org/10.18653/v1/S17-2088."
+  },
+  {
+    "after_source_paragraph": null,
+    "added": "19. Denny, M.J.; Spirling, A. Text preprocessing for unsupervised learning: Why it matters, when it misleads, and what to do about it. Political Analysis 2018, 26, 168–189. https://doi.org/10.1017/pan.2017.44."
+  },
+  {
+    "after_source_paragraph": 23,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": 25,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": 55,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": 155,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": null,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": null,
+    "added": ""
+  },
+  {
+    "after_source_paragraph": null,
+    "added": ""
+  }
+]

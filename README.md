@@ -1,61 +1,79 @@
-# Supplementary Code S1 and revision supporting materials
+# Comparative sentiment validity audit code
 
-This package accompanies the revised comparative sentiment measurement-validity manuscript. It contains reviewable code, aggregate tables, regenerated figure assets, and revision sensitivity outputs. It contains no tweet text, account-name records, row-level text hashes, or individual predictions. Original statistical code is licensed under MIT; see `LICENSE` and `LICENSE_SCOPE.md`. Third-party source data and individual prediction exports are not included or relicensed. The code repository is public at https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity; audited code commit `0e37fa4715f3f30de9151b849b7b23b2b791fad0`. A release DOI has not been issued.
+This package accompanies **Ranking Reversals in Automated Estimates of Negative Message Shares: An Audit of Two Twitter Archives**. It supplies executable statistical code, aggregate audit records, Tables S1–S24 and Figures 1–3. Original eligible code is MIT licensed; third-party data, models and dependencies are not relicensed.
 
-## What can be checked without restricted inputs
+This complete revision is Supplementary Code S1, version 0.4.0-input-audit. The authorized complete code/aggregate revision is published on branch `revision/reviewer-20261017` in https://github.com/xiaobeiyi6-netizen/comparative-sentiment-validity. The manuscript and outer package provenance identify its immutable commit. Use the complete package and its SHA-256 manifests for S1–S24; public baseline 77ecdd19d93eb0bce92063cdf9dd89ceefe63975 remains earlier provenance, rather than the source of all final tables. No DOI is claimed.
 
-From this package directory, install the statistical dependencies, then run:
+## Aggregate checks without source posts
 
 ```bash
 python -m pip install -r requirements-statistics.txt
 python analysis/verify_archive_tables.py
 python analysis/verify_package.py
+python analysis/verify_reviewer_revision.py
+python analysis/verify_round2.py
+python analysis/verify_release_integrity.py
 ```
 
-The first command checks main tables and reaggregates all 8,000 airline and 4,800 GOP classifier-row summaries. The second checks package hashes, error identities, new sensitivity summaries, and k=100 agreement. These checks validate stored aggregates and do not reconstruct the source human annotations or original neural inference. The complete budget protocols were separately executed during this revision using lawful local source records and archived predictions. Their 40 and 24 summaries matched the preserved summaries to all stored numerical precision.
+These checks reaggregate stored outputs and verify identities; they do not establish each original human annotation as correct. The last check verifies the added budget designs, diagnostics, tie treatment and regenerated figure assets.
 
-## Full statistical reruns with lawful local inputs
+## Rerun from lawful local inputs
 
-Place these exact files in a private directory you control; the package does not supply them:
+Keep the following four files in a private directory. No source tweets, account strings, row-level text hashes or individual prediction exports are distributed here.
 
-- `Tweets.csv`: 14,640-row source CSV, expected digest in audit/original_source_hashes.json.
-- `airline_predictions.csv`: aligned source export with reference, vader, roberta, text_sha256. Three-class labels are 0/1/2, negative=0.
-- `GOP_REL_ONLY.csv`: 13,871-row source CSV, expected digest in audit/original_source_hashes.json.
-- `gop_external_validation_results.zip`: preserved archive with `gop_external_validation_results/row_predictions_and_overlap_flags.csv` containing the 4,483 primary rows.
+- `Tweets.csv`: 14,640 source records.
+- `airline_predictions.csv`: aligned original three-class predictions and reference labels.
+- `GOP_REL_ONLY.csv`: 13,871 source records.
+- `gop_external_validation_results.zip`: preserved primary-row prediction archive.
 
-Run from the package root, replacing `/absolute/private/inputs` with that lawful local directory:
+Exact file hashes are recorded in `analysis/locked_model_replication.py`, and acquisition routes in `docs/DATA_PROVENANCE.md`. Use direct distributor copies and digest matching first; editorial requests for unavailable matched inputs go to the corresponding author through the process in `docs/REVIEWER_ACCESS.md`.
 
 ```bash
+python -m pip install -r requirements-reviewer.txt
 python analysis/airline_budget.py --raw /absolute/private/inputs/Tweets.csv --pred /absolute/private/inputs/airline_predictions.csv --out rerun_airline
 SCIE_DATA_ROOT=/absolute/private/inputs SCIE_OUTPUT_DIR=rerun_gop python analysis/reproduce_analysis.py
 python analysis/revision_sensitivity.py --inputs /absolute/private/inputs --out rerun_revision
+python analysis/reviewer_revision.py --inputs /absolute/private/inputs --out rerun_reviewer
 ```
 
-The recovered airline routine uses seed 20261015, upward-rounded 20% holdouts and independently sampled budgets. GOP uses seed 20261016, nearest-integer 20% holdouts and nested budgets. Calibration and evaluation records never overlap within a split. k=100 and the exact native smoothing/shrinkage formulas are preserved separately for each corpus; see manuscript Appendix A2. No code trains a classifier or restores historical neural inference. The new fixed-revision inference script and notebook are documented separately in docs/LOCKED_MODEL_REPLICATION.md. To regenerate all figure formats from exact aggregates, install requirements-figures.txt and run `python analysis/make_figures.py`. The PNG/PDF/SVG assets are also supplied directly. Regeneration creates new PDF metadata and therefore may change figure-file hashes without changing their plotted data.
+The last script conducts VADER input/lexicon diagnostics, native tie reaggregation, a fresh paired bootstrap, common-formula holdouts, complete finite-archive evaluation and account-disjoint budget evaluation. It does not run a neural model, recruit annotators, tune an optimal k, or replace the primary archived predictions. See `docs/REVIEWER_REVISION_20261017.md` and protocol JSON for precise targets and seeds.
 
-## Files
+## Figures and inference provenance
 
-- `supplementary_tables/`: S1–S9 full-precision CSVs.
-- `Supplementary_Tables_S1_S8.md`: readable tables with units and interpretation.
-- `audit/aggregates/`: original main summaries and regenerated original split records.
-- `audit/revision/`: reference checks, shrinkage and pairset summaries, and conditional bootstrap aggregate records.
-- `analysis/`: executable statistical scripts and verification checks.
-- `audit/REVISION_RUNTIME.json`: current statistical runtime, not a reconstruction of historical inference versions.
-- `docs/INFERENCE_PROTOCOL.md`: historical partial inference notes; missing revision/version information remains missing.
-- `figures/`: rebuilt Figures 1–3 as 600 dpi PNG and vector PDF/SVG.
-- `revision_changes.json`: paragraph-level before/after revision record.
-- `02_Revision_Verification_and_Action_Log.md`: Chinese item-by-item verification and author actions.
+```bash
+python -m pip install -r requirements-figures.txt
+python analysis/make_figures.py
+```
 
-## Boundaries
+Figures are numerical plots supplied in 600 dpi PNG and vector PDF/SVG. Figure 2 has prevalence and ordering panels and a genuine log2 budget axis. Its PNG is nonempty. Recreating PDFs can alter metadata bytes without altering plotted values.
 
-The exact historical RoBERTa commit, tokenizer snapshot, VADER package version, complete inference environment, and prediction-generation timestamps remain unavailable. Current software cannot be retrospectively asserted as those versions. A separately documented new inference run is now complete: all primary binary predictions match the archive. See docs/LOCKED_MODEL_REPLICATION.md; this does not recover historical inference provenance. Brand-target and SemEval historical supplement results were not fully rerun in this revision and remain limited construct/leakage diagnostics.
+The separately completed 17 October 2026 fixed-revision inference matched all primary binary predictions. The script/notebook and Table S9 reside in `analysis/`, `audit/locked_inference/` and `supplementary_tables/`. This is a new run, not recovery of the historical model or software environment. Legacy filenames containing “independent verification” refer to computational rechecking within the author's AI-assisted workflow, not validation by an independent research team.
 
-The source data are historical curated/convenience archives, not samples of current public attitudes. Splits, bootstrap replicates, and group pairs are dependent. Their quantiles are conditional archive variability. The new k grid does not establish an optimal deployment parameter. Institutional ethics/consent applicability remains undetermined. The author has authorized MIT release of eligible original code and is willing to support editorial source-level verification through the procedure in `docs/REVIEWER_ACCESS.md`. A specific confidential channel has not yet been agreed with the journal. No DOI, ethics approval, or unrestricted raw-data distribution permission is claimed.
+## Evidence and scope
 
-## Licensing and editorial access
+The original input protocol leaves handles and URLs in the text. VADER recognizes @United as the positive word united: masking the handle eliminates its three airline inversions but leaves substantial prevalence bias. This sensitivity qualifies, rather than erases, the original raw-input audit.
 
-The author's code authorization has been implemented in `LICENSE`. Dataset provenance and current source-license evidence are in `THIRD_PARTY_NOTICES.md`, `docs/DATA_PROVENANCE.md` and `docs/LICENSE_EVIDENCE.md`. The four required individual inputs already exist in the author's archive. `docs/REVIEWER_ACCESS.md` explains direct source retrieval, digest matching and, if necessary, a restricted journal-arranged verification route. This is not an offer to relicense source records under MIT. Repository public visibility has now been verified independently of the unresolved institutional ethics status.
+Label budgets retrospectively reuse released labels. Held-out transfer and complete-archive estimation are different tasks; the airline comparison of human-only and model-assisted ordering changes between them. Neither these records nor their resamples represent current public opinion or platform-wide probability samples. Source-specific human labels are fallible; complete original annotation manuals and individual votes were not recovered. Product and SemEval exploratory numerical results are not part of this revision's empirical evidence.
 
-## Completed fixed-revision inference replication
+Ethics and consent declarations in the revised manuscript state non-applicability for this secondary archive analysis. No institutional approval, exemption or waiver number is invented. The author's reported editorial clarification that no additional determination is required is not represented as an institutional approval. No confidential editor correspondence is distributed.
 
-Table S9 and audit/locked_inference record the completed 17 October 2026 run at commit 3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7. All primary binary predictions match, and all airline three-class labels match. The new script and no-output Colab notebook are in analysis/. Original budget results are unchanged; the new inference notebook did not rerun budget experiments or auxiliary corpora. Full returned individual outputs remain private. See docs/LOCKED_MODEL_REPLICATION.md.
+## File map
+
+- `Supplementary_Tables_S1_S24.md`: readable selections, notes and full-table CSV links by filename.
+- `supplementary_tables/`: full-precision S1–S24 CSVs, including S17b.
+- `audit/aggregates/`, `audit/revision/`: preserved native outputs and earlier revision sensitivities.
+- `audit/reviewer_revision/`: new aggregate outputs, per-repeat statistics and metadata.
+- `docs/`: current methods, source/license evidence and editorial access instructions.
+- `docs/historical/`: superseded editorial records, retained only as history.
+
+Historical records are not the current release checklist. Do not distribute the four private individual inputs or install artifacts with this public package.
+
+## Paired RoBERTa input audit and final statistical diagnostics
+
+`analysis/roberta_input_sensitivity.py` actually executes original and model-card inputs at the same fixed revision. The exact source bytes are validated and the original binary predictions must match the archives. Current CPU runtime versions and fixed model asset hashes are in `audit/roberta_input/runtime.json`; this is separate from the earlier T4 run. The model-card condition changes only the specified token-placeholder preprocessing. Budget tables continue to use original-input predictions. S19a/b/c retain overall/group results, confusion counts and all reversal identities; S20 retains token diagnostics.
+
+Keep all row outputs in a private directory outside this repository. The four lawful private inputs must be zipped with their unchanged basenames. Download only the model assets at commit 3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7 (the pinned config, model bin, vocabulary, merges, special-token map and README); do not update the revision or substitute model weights. See `docs/ROUND2_INPUT_AND_STATISTICS.md` for commands and operational definitions.
+
+`analysis/round2_statistics.py` generates paired differences, conflict/overlap counts and ACC diagnostics. It asserts per-repeat equality with all stored common-design scores. `analysis/verify_round2.py` reconstructs the aggregate metrics without source text. S21 records simulation-mean precision; S22 distinguishes mean groups per draw from group-repetition percentages. S23 and S24 report actual reference conflicts and matching scope. Source records and tweet identifiers are not independent dissemination events by definition.
+
+Airline common 400 ordering is similar for Group ACC and human-only and depends on tie penalties. In finite-airline estimation, Group ACC has fewer reversals than human-only but more than raw CC. Account comparisons use matched 100 budgets. No universal estimator or budget optimum is asserted.

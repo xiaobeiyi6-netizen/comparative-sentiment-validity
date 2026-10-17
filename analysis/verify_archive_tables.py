@@ -72,7 +72,7 @@ expect_rev={('Airline','VADER'):(15,3),('Airline','RoBERTa'):(15,0),
  ('GOP','VADER'):(45,7),('GOP','RoBERTa'):(45,7)}
 for row in revs.itertuples():assert (row.pairs,row.reversals)==expect_rev[(row.corpus,row.model)]
 
-# Direct checks of Table 2 and Table 4 source totals and group prevalence.
+# Direct checks of Table 3 and Table 5 source totals and group prevalence.
 air=pd.read_csv(A/'airline_group_prevalence.csv')
 gop=pd.read_csv(A/'gop_group_prevalence.csv')
 assert len(air)==6 and air.n.sum()==14640
@@ -81,7 +81,7 @@ for d in (air,gop):
     for col in ['reference_pct','vader_pct','roberta_pct']:
         assert d[col].between(0,100).all()
 
-# Table 5 group pair sensitivity, using original reference pairs.
+# Table 6 group pair sensitivity, using original reference pairs.
 pair=pd.read_csv(A/'pairwise_bias_reversal_mechanism.csv')
 for corpus,model in expect_rev:
     ds=pair[(pair.corpus==corpus)&(pair.model==model)]
@@ -93,15 +93,15 @@ for corpus,model in expect_rev:
             assert len(sub)==expected_n
             assert int(sub.reversed.sum())==(expected_v if model=='VADER' else expected_r)
 
-# Table 3/6 400- or 100-label budget comparisons visible in manuscript.
+# Table 4/7 400- or 100-label budget comparisons visible in manuscript.
 for (model, method,mae,reversal) in [
  ('vader','CC',27.09,28.83),('vader','ACC_pooled',14.40,28.83),
  ('vader','ACC_airline_shrunk',7.74,13.70),('vader','Human_calibration_only',2.66,3.20),
  ('roberta','CC',3.77,4.93),('roberta','ACC_pooled',3.75,4.93),
  ('roberta','ACC_airline_shrunk',2.61,4.10),('roberta','Human_calibration_only',2.66,3.20)]:
     row=asum[(asum.budget_per_airline==400)&(asum.model==model)&(asum.method==method)].iloc[0]
-    check_close(round(row.mean_absolute_prevalence_error_pp_mean,2),mae,'Table 3 MAE')
-    check_close(round(100*row.reversal_rate_gap0pp_mean,2),reversal,'Table 3 reversal')
+    check_close(round(row.mean_absolute_prevalence_error_pp_mean,2),mae,'Table 4 MAE')
+    check_close(round(100*row.reversal_rate_gap0pp_mean,2),reversal,'Table 4 reversal')
 for model,method,mae,rev,gaprev in [
  ('VADER','CC',25.22,26.34,18.42),('VADER','ACC_pooled',17.08,26.17,18.35),
  ('VADER','ACC_group_shrunk',17.11,27.17,19.75),('VADER','Human_only',6.42,13.04,2.23),
@@ -109,9 +109,9 @@ for model,method,mae,rev,gaprev in [
  ('RoBERTa','ACC_group_shrunk',12.16,20.36,13.43),('RoBERTa','Human_only',6.42,13.04,2.23)]:
     row=gsum[(gsum.budget_per_group==100)&(gsum.model==model)&(gsum.method==method)].iloc[0]
     for x,y,name in [(round(row.mean_absolute_error_pp_mean,2),mae,'MAE'),(round(100*row.reversal_rate_all_mean,2),rev,'strict reversal'),(round(100*row.reversal_rate_fixed_gap10_mean,2),gaprev,'gap10 reversal')]:
-        check_close(x,y,f'Table 6 {model} {method} {name}')
+        check_close(x,y,f'Table 7 {model} {method} {name}')
 
 print('PASS: Airline 8,000 and GOP 4,800 split-level summary rows reaggregated exactly.')
-print('PASS: Core metrics, all pair reversals and 3/5/10pp sensitivity, manuscript Tables 1-6 matched.')
+print('PASS: Core metrics, all pair reversals and 3/5/10pp sensitivity, manuscript Tables 2-7 matched.')
 print('CAUTION: Original model inference and airline split-generation were NOT rerun by this aggregate-only audit.')
 
