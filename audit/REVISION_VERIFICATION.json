@@ -43,5 +43,9 @@
   "public_visibility_evidence": "GitHub repository API returned visibility=public",
   "audited_public_code_commit": "0e37fa4715f3f30de9151b849b7b23b2b791fad0",
   "release_doi_created": false,
-  "tagged_release_created": false
+  "tagged_release_created": false,
+  "new_version_pinned_inference_completed": true,
+  "historical_inference_environment_recovered": false,
+  "primary_binary_predictions_identical": true,
+  "new_model_commit": "3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7"
 }

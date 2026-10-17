@@ -1,0 +1,85 @@
+{
+  "status": "COMPLETE_NEW_LOCKED_INFERENCE",
+  "recorded_utc": "2026-10-17T02:53:03.836173+00:00",
+  "historical_revision_recovered": false,
+  "new_model_inference_executed": true,
+  "model_id": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+  "model_commit": "3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7",
+  "model_files": {
+    ".gitattributes": {
+      "bytes": 1175,
+      "sha256": "fa057bb09b78fe6d33af5a01440be5e8c881cd8055de35ee5588ea759cf57bfc"
+    },
+    "README.md": {
+      "bytes": 4328,
+      "sha256": "05ad85143ed60f0abe631ab935485db046c24710d9bec50829b017cfc1e12bf7"
+    },
+    "config.json": {
+      "bytes": 929,
+      "sha256": "d2fba19997da698157196ba16f5fcb30a97a7551cef6845a0f3d743ee19c6129"
+    },
+    "merges.txt": {
+      "bytes": 456318,
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5"
+    },
+    "pytorch_model.bin": {
+      "bytes": 501045531,
+      "sha256": "4d24a3e32a88ed1c4e5b789fc6644e2e767500554e954b27dccf52a8e762cbae"
+    },
+    "special_tokens_map.json": {
+      "bytes": 239,
+      "sha256": "378eb3bf733eb16e65792d7e3fda5b8a4631387ca04d2015199c4d4f22ae554d"
+    },
+    "vocab.json": {
+      "bytes": 898822,
+      "sha256": "06b4d46c8e752d410213d9548eb27a54db70fda0319b6271fb8d59dead5e1cab"
+    }
+  },
+  "source_input_sha256": {
+    "Tweets.csv": "ea94b23f41892b290dec3330bb8cf9cb6b8bc669eaae5f3a84c40f7b0de8f15e",
+    "airline_predictions.csv": "5674f3e56dc3667344ab43c867ee8dd4f61126823950524c3f5cd54d92f9eda2",
+    "GOP_REL_ONLY.csv": "413bae11a4b04a414baffb63407788a3231a06b8ab806caaf9f930b5e2acec86",
+    "gop_external_validation_results.zip": "8a93da7db63b6d2f5c0c2daec0faabdbab0b8cf7be415b1af30e3d49636968e7"
+  },
+  "python": "3.13.15",
+  "software_versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.18.0",
+    "tokenizers": "0.23.2",
+    "huggingface_hub": "1.33.0",
+    "vaderSentiment": "3.3.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "safetensors": "0.8.0",
+    "scikit-learn": "1.6.1"
+  },
+  "device": "cuda:0",
+  "gpu_name": "Tesla T4",
+  "cuda_version": "13.0",
+  "cudnn_version": 92700,
+  "seed": 20261017,
+  "dtype": "float32",
+  "attention": "eager",
+  "deterministic_algorithms": true,
+  "tokenizer_class": "RobertaTokenizer",
+  "tokenizer_model_max_length": 1000000000000000019884624838656,
+  "vader_lexicon_sha256": "1ec9c6e9ee19aade328f8beb393a6afa71a5bb3acf7d3cc22d4ef568df374bf5",
+  "protocol": {
+    "Airline": {
+      "n": 14640,
+      "batch_size": 32,
+      "truncation": true,
+      "max_length": "tokenizer default"
+    },
+    "GOP": {
+      "n": 4483,
+      "batch_size": 24,
+      "truncation": true,
+      "max_length": 128
+    }
+  },
+  "text_preprocessing": "Airline original text; GOP strip then original normalization for deduplication only; no added @user/http replacement",
+  "code_sha256": "f761aeaec93f1a64341af88fe5c9a39772385f69e1cb9a2e42475885531ac8fc",
+  "budgets_and_auxiliary_corpora_rerun": false,
+  "boundary": "This new run tests stability of archived-output findings. It does not restore the historical inference environment."
+}

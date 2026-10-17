@@ -52,3 +52,14 @@ for row in bs.itertuples():
     assert abs(100*z.reversal_rate.quantile(.975)-row.reversal_q975_pct)<1e-10
 print('PASS: package hashes, group error identities, all k=100 budget matches, sensitivity reaggregation, label checks, and account-cluster summaries.')
 print('Boundary: aggregate checks do not replace source-record verification, institutional ethics review, or historical neural inference.')
+
+# New fixed-revision inference summary invariants (no private records required).
+s9=pd.read_csv(R/"supplementary_tables/Table_S9_Locked_Inference_Comparison.csv")
+assert len(s9)==4 and (s9.binary_label_changes==0).all()
+assert (s9.old_reversals_gap0==s9.new_reversals_gap0).all()
+assert (s9.changed_reversal_pairs==0).all()
+assert (s9.maximum_absolute_group_share_change_pp==0).all()
+lock=json.loads((R/"audit/locked_inference/runtime_and_model_lock.json").read_text())
+assert lock["historical_revision_recovered"] is False
+assert hashlib.sha256((R/"analysis/locked_model_replication.py").read_bytes()).hexdigest()==lock["code_sha256"]
+print("Fixed-revision inference aggregates and script provenance PASS")

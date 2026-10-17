@@ -1,0 +1,22 @@
+{
+  "verification_status": "PASS",
+  "checked_result_files": 12,
+  "input_hashes_and_alignment": "PASS",
+  "script_hash": "PASS",
+  "recomputed_aggregates": "PASS",
+  "probability_class_consistency": "PASS",
+  "canonical_export_consistency": "PASS",
+  "row_comparisons": [
+    {
+      "corpus": "Airline",
+      "n": 14640,
+      "binary_predictions_identical": true
+    },
+    {
+      "corpus": "GOP",
+      "n": 4483,
+      "binary_predictions_identical": true
+    }
+  ],
+  "scope": "Independent downstream audit of user-executed inference outputs; no second neural inference was performed by this verification script. Historical inference provenance is not recovered."
+}

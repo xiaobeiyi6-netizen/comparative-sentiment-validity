@@ -7,3 +7,6 @@
 已核对代码提交：`0e37fa4715f3f30de9151b849b7b23b2b791fad0`。
 
 尚未发行带DOI的长期归档版本。以后取得真实DOI再补入论文。伦理与知情同意适用性仍须取得真实机构结论，代码公开不能代替该决定。个体源记录的编辑核验程序见`REVIEWER_ACCESS.md`。
+
+
+New fixed-revision inference replication completed on 17 October 2026. All primary binary predictions match; see docs/LOCKED_MODEL_REPLICATION.md. Historical identity remains unverified and ethics/consent remains pending.

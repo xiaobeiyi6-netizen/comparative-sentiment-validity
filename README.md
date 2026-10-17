@@ -31,11 +31,11 @@ SCIE_DATA_ROOT=/absolute/private/inputs SCIE_OUTPUT_DIR=rerun_gop python analysi
 python analysis/revision_sensitivity.py --inputs /absolute/private/inputs --out rerun_revision
 ```
 
-The recovered airline routine uses seed 20261015, upward-rounded 20% holdouts and independently sampled budgets. GOP uses seed 20261016, nearest-integer 20% holdouts and nested budgets. Calibration and evaluation records never overlap within a split. k=100 and the exact native smoothing/shrinkage formulas are preserved separately for each corpus; see manuscript Appendix A2. No code trains a classifier or regenerates historical neural predictions. To regenerate all figure formats from exact aggregates, install requirements-figures.txt and run `python analysis/make_figures.py`. The PNG/PDF/SVG assets are also supplied directly. Regeneration creates new PDF metadata and therefore may change figure-file hashes without changing their plotted data.
+The recovered airline routine uses seed 20261015, upward-rounded 20% holdouts and independently sampled budgets. GOP uses seed 20261016, nearest-integer 20% holdouts and nested budgets. Calibration and evaluation records never overlap within a split. k=100 and the exact native smoothing/shrinkage formulas are preserved separately for each corpus; see manuscript Appendix A2. No code trains a classifier or restores historical neural inference. The new fixed-revision inference script and notebook are documented separately in docs/LOCKED_MODEL_REPLICATION.md. To regenerate all figure formats from exact aggregates, install requirements-figures.txt and run `python analysis/make_figures.py`. The PNG/PDF/SVG assets are also supplied directly. Regeneration creates new PDF metadata and therefore may change figure-file hashes without changing their plotted data.
 
 ## Files
 
-- `supplementary_tables/`: S1–S8 full-precision CSVs.
+- `supplementary_tables/`: S1–S9 full-precision CSVs.
 - `Supplementary_Tables_S1_S8.md`: readable tables with units and interpretation.
 - `audit/aggregates/`: original main summaries and regenerated original split records.
 - `audit/revision/`: reference checks, shrinkage and pairset summaries, and conditional bootstrap aggregate records.
@@ -48,10 +48,14 @@ The recovered airline routine uses seed 20261015, upward-rounded 20% holdouts an
 
 ## Boundaries
 
-The exact historical RoBERTa commit, tokenizer snapshot, VADER package version, complete inference environment, and prediction-generation timestamps remain unavailable. Current software cannot be retrospectively asserted as those versions. New source inference would be a separately documented replication. Only archived prediction-based statistics are reproduced here. Brand-target and SemEval historical supplement results were not fully rerun in this revision and remain limited construct/leakage diagnostics.
+The exact historical RoBERTa commit, tokenizer snapshot, VADER package version, complete inference environment, and prediction-generation timestamps remain unavailable. Current software cannot be retrospectively asserted as those versions. A separately documented new inference run is now complete: all primary binary predictions match the archive. See docs/LOCKED_MODEL_REPLICATION.md; this does not recover historical inference provenance. Brand-target and SemEval historical supplement results were not fully rerun in this revision and remain limited construct/leakage diagnostics.
 
 The source data are historical curated/convenience archives, not samples of current public attitudes. Splits, bootstrap replicates, and group pairs are dependent. Their quantiles are conditional archive variability. The new k grid does not establish an optimal deployment parameter. Institutional ethics/consent applicability remains undetermined. The author has authorized MIT release of eligible original code and is willing to support editorial source-level verification through the procedure in `docs/REVIEWER_ACCESS.md`. A specific confidential channel has not yet been agreed with the journal. No DOI, ethics approval, or unrestricted raw-data distribution permission is claimed.
 
 ## Licensing and editorial access
 
 The author's code authorization has been implemented in `LICENSE`. Dataset provenance and current source-license evidence are in `THIRD_PARTY_NOTICES.md`, `docs/DATA_PROVENANCE.md` and `docs/LICENSE_EVIDENCE.md`. The four required individual inputs already exist in the author's archive. `docs/REVIEWER_ACCESS.md` explains direct source retrieval, digest matching and, if necessary, a restricted journal-arranged verification route. This is not an offer to relicense source records under MIT. Repository public visibility has now been verified independently of the unresolved institutional ethics status.
+
+## Completed fixed-revision inference replication
+
+Table S9 and audit/locked_inference record the completed 17 October 2026 run at commit 3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7. All primary binary predictions match, and all airline three-class labels match. The new script and no-output Colab notebook are in analysis/. Original budget results are unchanged; the new inference notebook did not rerun budget experiments or auxiliary corpora. Full returned individual outputs remain private. See docs/LOCKED_MODEL_REPLICATION.md.

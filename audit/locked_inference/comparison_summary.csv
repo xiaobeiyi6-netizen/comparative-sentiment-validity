@@ -1,0 +1,5 @@
+corpus,model,n,groups,pair_count,binary_label_changes,binary_label_agreement_pct,old_group_prevalence_MAE_pp,new_group_prevalence_MAE_pp,maximum_absolute_group_share_change_pp,changed_reversal_pairs,gap0_pairs,old_reversals_gap0,new_reversals_gap0,gap3_pairs,old_reversals_gap3,new_reversals_gap3,gap5_pairs,old_reversals_gap5,new_reversals_gap5,gap10_pairs,old_reversals_gap10,new_reversals_gap10,three_class_label_changes
+Airline,VADER,14640,6,15,0,100.0,27.131840962500817,27.131840962500817,0.0,0,15,3,3,14,3,3,14,3,3,10,3,3,0.0
+Airline,RoBERTa,14640,6,15,0,100.0,3.6774531410760787,3.6774531410760787,0.0,0,15,0,0,14,0,0,14,0,0,10,0,0,0.0
+GOP,VADER,4483,10,45,0,100.0,25.196292954303715,25.196292954303715,0.0,0,45,7,7,43,7,7,39,7,7,30,3,3,
+GOP,RoBERTa,4483,10,45,0,100.0,16.000934611142238,16.000934611142238,0.0,0,45,7,7,43,6,6,39,5,5,30,2,2,

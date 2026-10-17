@@ -345,3 +345,15 @@ New revision sensitivity. 2,000 global paired recorded-account-name cluster boot
 | Airline | VADER | 7701 | 0 | 2000 | 26.0233 | 20.0000 | 40.0000 | 27.1055 | 25.9869 | 28.2852 |
 | GOP | RoBERTa | 3287 | 0 | 2000 | 19.1067 | 11.1111 | 28.8889 | 16.1053 | 14.2065 | 18.0507 |
 | GOP | VADER | 3287 | 0 | 2000 | 21.9044 | 11.1111 | 33.3333 | 25.2429 | 23.1007 | 27.4316 |
+
+
+## Table S9 New fixed-revision inference comparison
+
+| Corpus | Model | n | Binary changes | Archived reversals | New reversals |
+|---|---|---:|---:|---:|---:|
+| Airline | VADER | 14,640 | 0 | 3/15 | 3/15 |
+| Airline | RoBERTa | 14,640 | 0 | 0/15 | 0/15 |
+| GOP | VADER | 4,483 | 0 | 7/45 | 7/45 |
+| GOP | RoBERTa | 4,483 | 0 | 7/45 | 7/45 |
+
+Airline three-class changes were also zero. Historical GOP comparisons concern binary outcomes only. All group shares, MAEs and pair identities were unchanged, including original ≥3/5/10-pp sets. Fixed model revision: 3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7. This is a new run, not recovery of historical versions. Full-precision CSV: supplementary_tables/Table_S9_Locked_Inference_Comparison.csv.

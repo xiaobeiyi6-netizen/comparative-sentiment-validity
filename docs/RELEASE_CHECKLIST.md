@@ -9,3 +9,6 @@
 - Exact historical inference versions remain unavailable. Ethics and consent applicability remain undetermined; neither is implied by code release.
 - Before journal submission, replace the ethics/consent statements with the genuine institutional determination and review the final manuscript as author.
 - `docs/REVIEWER_ACCESS.md` is a proposed concrete verification procedure; the journal has not yet agreed a specific confidential channel.
+
+
+New fixed-revision inference replication completed on 17 October 2026. All primary binary predictions match; see docs/LOCKED_MODEL_REPLICATION.md. Historical identity remains unverified and ethics/consent remains pending.

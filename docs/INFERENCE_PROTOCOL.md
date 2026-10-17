@@ -10,3 +10,7 @@ Source notebooks from the analyst archive specify:
 
 Re-running inference with today's downloads is a *new replication run*. It must be labeled as such and compared row by row with archived outputs rather than silently replacing historical predictions. The analysis script in this release deliberately starts from previously archived predictions, preserving the historical outcome.
 
+
+## Completed new replication
+
+A new fixed-revision run on 17 October 2026 matched all primary binary predictions. This does not resolve the historical revision. Full new-run settings and hashes are in audit/locked_inference/runtime_and_model_lock.json; instructions and scope are in LOCKED_MODEL_REPLICATION.md. The script retains archived results for downstream comparisons.
